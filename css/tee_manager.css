@@ -1,0 +1,160 @@
+#peoplePage .peopletable {
+	width: 700px;
+	height: 100%;
+	border: solid 1pt black;
+}
+
+#submitStatus {
+	overflow: scroll;
+	display: box;
+	width: 350px;
+	height: 800px;
+	position: absolute;
+	top:0;
+	left: 0;
+/*	display: none;*/
+}
+
+#peopleTable .person {
+	display: inline-block;
+	width: auto;
+	border-bottom: solid 1pt  #d1d0d0;
+	
+}
+
+.person div {
+	display: inline-block;
+	width: 250px;
+/*	border: solid 1px green;	*/
+	margin: 4px;
+}
+
+.person div.taidoRank {
+	width: 50px;
+}
+.person div.birthYear {
+	width: 50px;
+}
+
+.person div.ui-button {
+	width: auto;
+	height: 20px;
+	font-size: 10px;
+	margin: 2;
+	padding: 0;
+}
+
+.person div.position {
+	width: 70px;
+}
+.person div.letterOfRecommendation {
+	width: 50px;
+	text-align: center;
+	color: red;
+	border: solid 1pt red;
+	border-bottom-right-radius: 3px;
+	border-bottom-left-radius: 3px;
+	border-top-right-radius: 3px;
+	border-top-left-radius: 3px;	
+}
+
+.person div.letterOfRecommendation.disabled{
+	border: 0;
+}
+
+.eventTitle {
+	font-size: 16px;
+	font-weight: bold;
+	float: left;
+	margin-top: 10px;
+}
+
+.addToEvent {
+	float:right;
+	width: auto;
+	margin-top: 10px;
+	padding: 0;
+	height: 25px;
+	font-size: 10px;
+}
+
+.addTeamButton {
+	float:right;
+	width: auto;
+	margin-top: 10px;
+	padding: 0;
+	height: 25px;
+	font-size: 10px;
+}
+
+.eventList {
+	border: solid 1pt  #d1d0d0;
+	display: block;
+	height: auto;
+}
+
+.eventList .team {
+	border: solid 1pt  #d1d0d0;
+	display: block;
+	width: auto;
+	margin: 3px;
+	border-bottom-right-radius: 6px;
+	border-bottom-left-radius: 6px;
+	border-top-right-radius: 6px;
+	border-top-left-radius: 6px;		
+	padding: 5px;
+}
+
+.eventList .team .removeButton {
+	float:right;
+	width: auto;
+	padding: 0;
+	height: 25px;
+	font-size: 10px;
+}
+
+.eventList .teamName {
+	font-size: 16px;
+	font-weight: bold;
+	display: block;	
+}
+
+.dialog {
+	font-size: 12px;
+}
+.dialog label {
+	display: block;
+	vertical-align: middle;
+	height: 25px;
+}
+
+
+.dialog .title {
+	vertical-align: inherit;
+	display: inline-block;
+	width: 120px;
+	height: 25px;	
+}
+.dialog input {
+	display: inline-block;
+}
+
+.dialog .selectPerson {
+	display: inline-block;	
+	width: 170px;
+}
+.dialog .selectPerson .variableObserver {
+	vertical-align: inherit;
+	width: 150px;
+	height: 25px;
+}
+
+.dialog input.birthDay{
+	width: 30px;
+}
+
+#reportsPage .button.report {
+	width: 100%;
+	text-align: center;
+	margin-bottom: 10px;
+}

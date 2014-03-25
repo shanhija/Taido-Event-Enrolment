@@ -1,0 +1,754 @@
+* {
+	font-family: sans-serif;
+}
+div {
+/*	border: solid 1px gray;	 */
+}
+
+body {
+	overflow-y: scroll;
+}
+
+.loading {	
+	display: none;
+	vertical-align: middle;
+}
+
+.nameok {	
+	display: none;
+	vertical-align: middle;
+}
+
+
+.wrapper {
+	width: 900px;
+	margin: 0 auto;
+}
+
+.logo {
+    height: 215px;
+	width: 100%;
+    background: #ffffff url( ../images/logo.png ) no-repeat top left;
+    border-bottom: 1px solid #d1d0d0;
+}
+
+.variableErrorMessage {
+	color: red;
+	font-weight: bold;	
+	display: none;
+}
+
+.variableErrorMessage.error {
+	display: inline;
+}
+
+
+.navigation {
+	list-style: none;
+	width: 900px;
+	padding: 0;
+	color: #0085ce;
+	height: 75px;
+    border-bottom: 1px solid #d1d0d0;	
+}
+
+
+.navigation ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	height: 55px;
+    border-bottom: 1px solid #d1d0d0;	
+}
+
+.navigation li.opened {
+	background: rgb(193, 222, 0);
+}
+
+.navigation li {
+	position: relative;
+	float: left;
+	margin: 0 0;
+	padding: 0;
+	text-align: -webkit-match-parent;	
+}
+
+.navigation a {
+	display: block;
+	color: rgb(3, 121, 176);
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 14px;
+	font-weight: normal;
+	padding: 0px 10px;
+	line-height: 50px;
+	border-bottom: 5px solid rgb(193, 222, 0);
+	margin: 0px 5px;
+	text-decoration: none;
+}
+
+.navigation .opened a {
+	color: #ffffff;
+}
+
+.navigation li.disabled {
+/*	display: block;*/
+	display: none;
+}
+.navigation .disabled a {
+/*	display: block;*/
+	display: none;
+	color: #d1d0d0;
+	border-bottom: 5px solid #d1d0d0;	
+}
+
+.navigation .summaryCost {
+	position: absolute;
+	text-align: center;
+	font-weight: bold;
+	color: black;
+	width: 100%;
+	display: block;
+}
+
+.navigation .summaryCost .variableObserver {
+	display:inline;
+}
+
+.clearfloat {
+	clear: both;
+}
+
+.pages  {
+}
+
+.page {
+	clear: both;
+	padding: 10px;
+	margin-top: 10px;
+/*	border: solid 2px blue;*/
+}
+
+.pages .page {
+	display: none;
+}
+
+#loadingPage {
+	display: block;
+}
+
+h1 {
+	font-size: 20px;
+	font-weight: bold;
+	color: rgb(3, 121, 176);	
+}
+
+.page h2 {
+	clear: both;
+	font-size: 16px;
+	font-weight: bold;
+}
+
+
+.input {
+	position: relative;
+	float: left;
+}
+
+
+div.event  {
+	width: 100%;
+	height: 30px;
+	margin: 5px;
+}
+
+/*div.variable {
+	border: solid 2px #a9e8ff;
+}
+
+
+div.variable.selected {
+	background: #0085ce;
+	border: solid 2px black;
+	color: #ffffff;
+
+}
+
+*/
+.selectPerson input{
+	display: inline;	
+}
+
+.selectPerson .variableObserver {
+	display: none;
+}
+
+.selectPerson .removePersonButton {
+	display: none;
+	float: right;
+}
+
+.selectPerson.personSelected input {
+	display: none;
+}
+
+.selectPerson.personSelected .variableObserver {
+	display: inline;
+}
+
+.selectPerson.personSelected .removePersonButton {
+	display: block;
+}
+.variable.selectPerson.personSelected {
+	display: inline-block;
+	min-width: 200px;
+}
+
+.removePersonButton {
+/*	background-image: url(css/ui-lightness/images/ui-icons_ef8c08_256x240.png);*/
+	width: 14px;
+	height: 14px;
+	overflow: hidden;
+	display: block;
+}
+
+span.ui-button-text {
+/*	width: 0px;*/
+	margin: 0;
+	padding: 0;
+}
+
+/* Personal information specific */
+#personalPage label {
+	display: block;
+	clear: both;
+}
+
+#personalPage label span.title {
+	width: 150px;
+	display: block;
+	float: left;
+}
+
+#personalPage input select {
+	text-align:left;
+}
+#personalPage label div {
+/*	width: auto;*/
+/*	display: inline-block;	*/
+}
+
+#personalPage label div.flags {
+	display: inline-block;
+	height: 40px;
+}
+
+#personalPage label .flags  img {
+	height: 30px;
+	margin: 5px;
+}
+
+#personalPage .requireValue.disabled {
+	display: none;
+}
+
+/* Packages specific */
+
+div.packages {
+	display: block;
+	width: 100%;
+	margin-top: 10px;
+}
+
+div.package {
+	width: 250px;
+	float: left;
+	margin: 10px;
+	padding: 0 5px 0 5px;
+	height: 350px;
+
+}
+
+.package .title {
+	font-size: 24px;
+	margin: 12px 0 2px 0;
+	text-align: center;
+	height: 90px;
+}
+
+.package .contents {
+	height: 200px;
+	text-align: left;
+}
+
+.package .price {
+	text-align: center;
+}
+
+#packagesPage label {
+	display: block;
+	clear: both;
+}
+
+#packagesPage label span.title {
+	width: 200px;
+	display: block;
+	float: left;
+}
+
+#packagesPage input select {
+	text-align:left;
+}
+
+
+.selected h1 {
+	color: #ffffff;
+}
+
+.event div {
+	line-height: 30px;
+	display: block;
+	height: 30px;
+	float: left;
+	padding: 0 10px 0 10px; 
+	vertical-align: middle;
+	text-align: -webkit-match-parent;		
+}
+.event .code {
+	font-size: 20px;
+	width: 30px;
+}
+.event .title {
+	font-size: 20px;
+}
+.event .rank {
+	float: right;
+}
+.event .year {
+	float: right;
+}
+
+/* IFG teams page  */
+#ifgTeamsPage label {
+	display: block;
+	clear: both;
+}
+
+#ifgTeamsPage label span.title {
+	width: 100px;
+	display: block;
+	float: left;
+}
+
+#ifgTeamsPage input select {
+	text-align:left;
+}
+
+div.selectPerson {
+	border: 0;
+	height: 25px;
+}
+
+div.dantai {
+	display: block; 
+	float: left; 
+	width: 40%;
+}
+
+div.dantai.disabled {
+	display: none;
+}
+
+.dantai span.title {
+	width: 100px;
+}
+
+/* Judges page */
+#judgePage h2 {
+	margin-top: 20px;
+}
+#judgePage div.variable {
+	margin: 10px 30px 0px 30px;
+	line-height: 30px;
+	display: block;
+	height: 30px;
+	font-size: 20px;
+	float: left;
+	padding: 0 10px 0 10px; 
+	vertical-align: middle;
+	text-align: -webkit-match-parent;		
+}
+
+#judgePage .variable.disabled {
+	display: none;
+}
+
+#judgePage label {
+	display: block;
+	clear: both;
+}
+
+#judgePage label span.title {
+	width: 200px;
+	display: block;
+	float: left;
+}
+
+#volunteerPage .day {
+	width: 260px;
+	display: inline-block;
+	height: 100px;
+	text-align: left;
+	margin: 5px;
+	padding: 5px;
+	font-size: 12px;
+	
+}
+
+#volunteerPage .day.disabled {
+	display: none;
+}
+
+#volunteerPage .day h2 {
+	text-align: center;
+}
+
+/* Hotel page */
+div.hotelday {
+	display: inline-block;
+	float: left;
+	width: 130px;
+	margin: 3px;
+	height: 160px;
+}
+
+.hotelday.disabled {
+	display: none;
+}
+
+.hotel ul {
+	text-align: center;
+	list-style: none;
+	margin: 2px;
+	padding: 0;
+}
+.hotel li {
+	font-size: 12px;
+}
+
+.roomtypes {
+	clear: both;
+}
+
+.roomtype {
+	display: inline-block;
+	float: left;
+	width: 130px;
+	margin: 3px;
+	height: 110px;
+}	
+
+.roomtype li {
+	font-size: 12px;
+}
+.roomtype div.variable {
+	text-align:left;
+	font-weight: bold;
+	display: inline-block;	
+}
+
+.roomtype .title {
+	margin: 12px 0 10px 0;
+}
+
+
+.hotelDetails {
+	clear: both;
+}
+.hotelDetail {
+	width: 100%;
+	clear: both;
+}
+
+.hotelDetail span {
+	width: 200px;
+	display: block;
+	float: left;
+}
+
+.hotelDetail ul {
+	text-align: center;
+	list-style: none;
+	margin: 2px;
+	padding: 0;
+}
+
+.inputError {
+	border: solid 1px red;
+}
+
+
+#optionalPage .option {
+	display: inline-block;
+	float: left;
+	width: 260px;
+	margin: 10px;
+	height: 160px;
+}
+
+#optionalPage .option .title {
+	font-size: 20px;
+	margin: 12px 0 5px 0;
+	text-align: center;
+	height: 24px;
+}
+
+#optionalPage .option .contents {
+	height: 55px;
+	font-size: 14px;
+	padding: 10px;
+	text-align: left;
+}
+
+#optionalPage .option.disabled{
+	display: none;
+}
+
+#optionalPage .option .price {
+	text-align: center;
+	font-weight: 30px;
+}
+
+
+/* Summary page */
+.summary h2 {
+	padding: 20px 0 0 0;
+}
+.summary div.varSummary {
+	display: block;
+	float: left;
+	width: 100%;
+}
+
+.summary div.varSummary.disabled {
+	display: none;
+}
+
+.summary span.title {
+	width: 200px;
+	display: block;
+	float: left;
+}
+
+#summaryPage  div.variableObserver {
+	text-align:left;
+	display: inline-block;
+/*	color: rgb(3, 121, 176);	*/
+}
+
+#summaryPage .dantai .title {
+	width: 150px;
+	display: inline-block;	
+	float: left;
+	clear: left;
+}
+
+#summaryPage .dantai .variableObserver {
+	float: left;
+}
+
+#summaryPage .dantai {
+	text-align:left;
+	display: inline-block;	
+	float: left;
+	width: 100%;
+	margin-top: 10px;
+}
+
+#summaryPage .dantai .div {
+	float:left;
+	display: block;
+	clear: left;
+}
+
+#summaryPage .dantai.disabled {
+	display: none;
+}
+
+
+#summaryPage .eventSummary span {
+	display: block;
+}
+
+
+.judgeSummary span.title {
+	width: 250px;
+}
+
+.hotelSummary .requireValue {
+	display: inline;
+}
+
+.hotelSummary .requireValue.disabled {
+	display: none;
+}
+.costSummary {
+	display: block;
+	float: right;
+	width: auto;
+}
+
+.enrollButton {
+	width: 200px;
+}
+
+.enrollButtons {
+	display: inline-block;
+	width: auto;
+	margin: 20px 0 0 150px;
+}
+
+.enrollButton .ui-button-text {
+	text-align: center;
+	width: auto;
+}
+
+.variable-hover {
+	background: #eeeeee;
+}
+
+.selected {
+	background: #cccccc;
+}
+
+.disabled {
+	display: none;
+	color: #ff0000;
+}
+
+
+.warning.disabled {
+	display: none;
+}
+
+.warning {
+	clear: both;
+	display: block;
+	border: solid 2px red;
+	padding: 3px;
+	margin: 5px;
+	border-bottom-right-radius: 6px;
+	border-bottom-left-radius: 6px;
+	border-top-right-radius: 6px;
+	border-top-left-radius: 6px;
+	
+}
+
+.warning .title {
+	color: red;
+	font-weight: bold;
+}
+
+.price {
+	font-size: 30px;
+	font-weight: bold;
+}
+
+.registerinfo {
+	width: 500px;
+	display: block;	
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.registerinfo .title {
+	font-size: 20px;
+	font-weight: bold;
+	color: rgb(3, 121, 176);		
+	float: left;
+	display: inline-block;
+	margin-top: 12px;
+	margin-left: 20px;
+}
+
+.registerinfo .details {
+	display: block;
+	float: left;
+	clear: both;
+	margin-top: 20px;
+	text-align: left;
+}
+#loginForm #emailaddress {
+	margin: 10px;
+	font-size: 14px;
+	float:left;
+	display: inline-block;
+	margin-bottom: 30px;
+}
+
+#loginForm #submitLogin {
+	clear: both;
+	display: block;
+}
+
+#loginForm #email {
+	width: 300px;
+	font-size: 18px;
+	margin: 0px;
+}
+
+#controls {
+	width: 100%;
+	border-top: 1px solid #d1d0d0;	
+}
+
+#controls .button {
+	display: block;
+	float: right;
+	width: 150px;
+	margin-top: 10px;
+	margin-left: 10px;
+}
+
+#controls #prevButton {
+	float: left;
+	margin-left: 0;
+}
+
+#footer {
+	width: 100%;
+	border-top: 1px solid #d1d0d0;
+	margin-top: 10px;
+	padding-top: 10px;
+	margin-bottom: 0px;
+	height: 100px;
+}
+
+#footerLeft {
+	display: block;
+	width: 300px;
+	float: left;
+	text-align: left;
+}
+
+#footerRight {
+	display: block;
+	width: 300px;
+	float: right;
+	text-align: right;
+}
+
+#submitStatus {
+	overflow: scroll;
+	display: box;
+	width: 350px;
+	height: 600px;
+	position: absolute;
+	top:0;
+	left: 0;
+	display: none;
+}
+
+.dialog {
+	display: none;
+}
