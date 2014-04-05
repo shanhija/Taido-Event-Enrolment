@@ -25,8 +25,8 @@ $result  = query($mysqli, "SELECT personid, manager, nationality FROM tee_people
 $msg = '
 Dear recipient,
 
-You have requested login information. To login to the enrolment system, click on the following link:
-http://www.taido.org/wtc2013/gate.php?page=welcome&loginid=';
+You have requested login information. To login to the enrollment system, click on the following link:
+' . $enrollment_base_url . 'gate.php?page=welcome&loginid=';
 
 if ($result->num_rows > 0) {
 	// Database contains the email address
@@ -43,7 +43,7 @@ if ($result->num_rows > 0) {
 			$msg .= '
 
 You have been marked as a manager of '.$person->nationality.' enrolments. You can access the manager console by following the link:
-http://www.taido.org/wtc2013/gate.php?page=manage&loginid='.$id;
+' . $enrollment_base_url .'gate.php?page=manage&loginid='.$id;
 
 		}
 		query($mysqli, "UPDATE tee_people SET loginid=\"".$id."\" WHERE personid=".$person->personid);
@@ -57,17 +57,17 @@ http://www.taido.org/wtc2013/gate.php?page=manage&loginid='.$id;
 
 $msg .='
 
-If you did not receive this email on purpose, please contact stl@taido.fi
+If you did not receive this email on purpose, please contact ' . $contact_email . '
 
 Sincerely yours,
-WTC2013 web team
+' . $str_event_short . ' web team
 ';
 
-$headers = 'From: stl@taido.fi' . "\r\n" .
-    'Reply-To: stl@taido.fi' . "\r\n" .
+$headers = 'From: ' . $contact_email . "\r\n" .
+    'Reply-To: ' . $contact_email . "\r\n" .
     'X-Mailer: PHP/' . phpversion();
 
-if (!mail($email, "WTC2013 - enrollment login info", $msg, $headers)) {
+if (!mail($email, $str_event_short . " - enrollment login info", $msg, $headers)) {
 	$error = error_get_last();
 	echo "Send unsuccessfull: " + $error["message"];
 	exit;

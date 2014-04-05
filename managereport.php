@@ -10,6 +10,7 @@ if (array_key_exists("actor", $INDATA)) {
 	$actor = $person->personid;
 }
 
+$reportName = $INDATA['report'];
 
 /** PHPExcel */
 include 'Classes/PHPExcel.php';
@@ -23,18 +24,15 @@ $xls = new PHPExcel();
 
 // Set properties
 // echo date('H:i:s') . " Set properties\n";
-$xls->getProperties()->setCreator("Maarten Balliauw");
-$xls->getProperties()->setLastModifiedBy("Maarten Balliauw");
-$xls->getProperties()->setTitle("Office 2007 XLSX Test Document");
-$xls->getProperties()->setSubject("Office 2007 XLSX Test Document");
-$xls->getProperties()->setDescription("Test document for Office 2007 XLSX, generated using PHP classes.");
-
-$reportName = $INDATA['report'];
+$xls->getProperties()->setCreator("Taido Event Enrollment System");
+$xls->getProperties()->setLastModifiedBy("Taido Event Enrollment System");
+$xls->getProperties()->setTitle($str_event_short . " - " . $reportName);
+$xls->getProperties()->setSubject($str_event_name);
+$xls->getProperties()->setDescription("");
 
 switch ($INDATA['report']) {
 
 case "people":
-
 	$query = "SELECT personid, firstName, lastName, nationality, sex, birthDay, birthMonth, birthYear, taidoRank, email, package, role FROM wtc_people WHERE status='Submitted'";
 	if ($person->manager == 1) {
 		$query.= " AND nationality='".$person->nationality."'";
@@ -62,7 +60,6 @@ case "people":
 		}
 		
 		$row["taidoRank"] = rankNumToStr($row["taidoRank"]);
-
 		
 		$dojoResult = $mysqli->query("SELECT value FROM wtc_variables WHERE personid=".$row["personid"]." AND variable='dojo'") or die($mysqli->error);
 		
@@ -78,10 +75,9 @@ case "people":
 	$sheet->setTitle('People');
 	$sheet->setAutoFilterByColumnAndRow(0,1,$cols-1,1);
 
-break;
+    break;
 
 case "wtcPeople":
-
 	$firstSheet = true;
 	
 	if ($person->manager == 1) {
@@ -91,10 +87,8 @@ case "wtcPeople":
 		echo "You do not have the right to access this page.";
 		exit();
 	}
-	
 
-	for($event = 1; $event <= 10; ++$event) {
-	
+	for($event = 1; $event <= 10; ++$event) {	
 		$query = 'SELECT 
 			wtc_people.personid AS personid, 
 			wtc_people.firstName AS firstName, 
@@ -140,6 +134,7 @@ case "wtcPeople":
 		$sheet->setAutoFilterByColumnAndRow(0,1,$cols-1,1);
 	}
 	break;
+    
 case "ifgPeople":
 	$firstSheet = true;
 	
@@ -151,9 +146,7 @@ case "ifgPeople":
 		exit();
 	}
 	
-
-	for($event = 1; $event <= 23; ++$event) {
-	
+	for($event = 1; $event <= 23; ++$event) {	
 		$query = 'SELECT 
 			wtc_people.personid AS personid, 
 			wtc_people.firstName AS firstName, 
@@ -441,8 +434,7 @@ case "all":
 	$eventCodes = array();
 	for ($i=1; $i <= 10; ++$i) $eventCodes["A".$i] = "A".$i;
 	for ($i=1; $i <= 23; ++$i) $eventCodes["B".$i] = "B".$i;	
-		
-		
+				
 	$categories = array(
 		"personid" => "Personal details",
 		"package" => "Package",
@@ -552,7 +544,6 @@ case "all":
 	$sheet->fromArray(array_values($fields), null, "A2");	
 	$rowid = 3;
 	while ($personRow = $peopleResult->fetch_assoc()) {
-
 		$row = $emptyRow;
 		
 		foreach ($personRow as $key=>$value) {
@@ -571,12 +562,10 @@ case "all":
 			if ($posRow = $posResult->fetch_assoc()) {
 				$value = $posRow["position"];
 				switch($value[0]) {
-				case 'p': $value = str_replace("p","Player ", $value); break;
-				case 'r': $value = str_replace("r","Reserve ", $value); break;
-				case 'l': $value = "Leader"; break;
-				}
-				
-				
+			        case 'p': $value = str_replace("p","Player ", $value); break;
+			        case 'r': $value = str_replace("r","Reserve ", $value); break;
+			        case 'l': $value = "Leader"; break;
+				}				
 			}
 			
 			$row[$eventRow["event"]] = $value;
@@ -607,7 +596,6 @@ case "all":
 		
 		$sheet->fromArray(array_values($row), null, "A" . $rowid);		
 		
-			
 		++$rowid;
 	}
 
@@ -685,16 +673,15 @@ case "all":
 		}
 		
 		$sheet->fromArray(array_values($row), null, "A" . $rowid);		
-		
 			
 		++$rowid;
-	
 	}
 	
 	$sheet->setTitle("Teams");
 	$sheet->setAutoFilterByColumnAndRow(0,1,count($teamFields)-1,1);	
 
 	break;		
+
 default: 
 	echo "Could not identify report type.";
 	exit();
@@ -709,7 +696,6 @@ $xlsWriter->save($reportFile);
 // Echo done
 // echo date('H:i:s') . " Done writing file.\r\n";
 	
-	
 function rankNumToStr($rank) {
 	if ($rank < 0) {
 		return (-$rank). " kyu";
@@ -721,11 +707,14 @@ function rankNumToStr($rank) {
 }
 ?>
 <html>
+<head>
 <script>
 //	setTimeout(function() {
 		window.location.href= "<? echo $reportFile;?>";
 //	}, 0);
 </script>
+<title>redirecting...</title>
+</head>
 <body>
 </body>
 </html>

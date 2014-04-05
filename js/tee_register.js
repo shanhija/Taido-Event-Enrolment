@@ -4,7 +4,7 @@ $(function() {
 	var showFailure = function(emailAddr, reason) {
 		$("#loginForm").hide();
 		$("#resultTitle").html("Failed!");
-		$("#resultDetails").html("Email could not be sent to " + emailAddr + " address. Please check address. The following error was reported: <br>" + reason);
+		$("#resultDetails").html("Email could not be sent to " + emailAddr + " address. Please check address. The following error was reported: <br />" + reason);
 		$("#result").show();			
 	};
 	
@@ -27,11 +27,11 @@ $(function() {
 		.fail(function(jqXHR, textStatus, errorThrown) {
 			switch(jqXHR.status) {
 				case 404: 
-					showFailure(emailAddr, "Registration script could not be found. <br>[error code: " + jqXHR.status + "]"); break;
+					showFailure(emailAddr, "Registration script could not be found. <br />[error code: " + jqXHR.status + "]"); break;
 				case 500:
 					showFailure(emailAddr, "Internal server error."); break;
 				default:
-					showFailure(emailAddr, 	textStatus + "<br>[error code: " + jqXHR.status + "]");
+					showFailure(emailAddr, 	textStatus + "<br />[error code: " + jqXHR.status + "]");
 			}
 		})
 		.always(function() {

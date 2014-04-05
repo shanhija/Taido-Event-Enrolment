@@ -1,4 +1,5 @@
 var loginID;
+var contactEmail = "stl@taido.fi";
 
 /** Widget for handling selection of persons */
 function SelectPersonWidget(component, model) {	
@@ -219,13 +220,13 @@ function GlobalModel() {
 				var person = jQuery.parseJSON(response);
 				// Update model
 			} catch(exception) {
-				alert("Could not store person. Please contact stl@taido.fi and supply the following message: exception=" + exception + " response=" + response);	
+			    alert("Could not store person. Please contact " + contactEmail + " and supply the following message: exception=" + exception + " response=" + response);
 			}
 			mdl.updatePerson(person);
 			
 		})
 		.fail(function(jqXHR, type, errorObj) {
-			alert("Could not store person. Please contact stl@taido.fi and supply the following message: type=" + type + ", error="+errorObj);			
+			alert("Could not store person. Please contact " + contactEmail + " and supply the following message: type=" + type + ", error="+errorObj);			
 		})
 		.complete(function() {
 		});	
@@ -259,13 +260,13 @@ function GlobalModel() {
 							var person = jQuery.parseJSON(response);
 							// Update model
 						} catch(exception) {
-							alert("Could not store person. Please contact stl@taido.fi and supply the following message: exception=" + exception + " response=" + response);	
+							alert("Could not store person. Please contact " + contactEmail + " and supply the following message: exception=" + exception + " response=" + response);	
 						}
 						mdl.updatePerson(person);
 						
 					})
 					.fail(function(jqXHR, type, errorObj) {
-						alert("Could not store person. Please contact stl@taido.fi and supply the following message: type=" + type + ", error="+errorObj);			
+						alert("Could not store person. Please contact " + contactEmail + " and supply the following message: type=" + type + ", error="+errorObj);			
 					})
 					.complete(function() {
 						dialog.dialog( "close" );			
@@ -296,12 +297,12 @@ function GlobalModel() {
 							.success(function(response) {			
 								$("#submitStatus").append(response+"done");		
 								if (response != "true") {
-									alert("Could not remove person. Please contact stl@taido.fi and supply the following message: response=" + response);	
+									alert("Could not remove person. Please contact " + contactEmail + " and supply the following message: response=" + response);	
 								}
 								mdl.removePerson(person.personid);						
 							})
 							.fail(function(jqXHR, type, errorObj) {
-								alert("Could not store person. Please contact stl@taido.fi and supply the following message: type=" + type + ", error="+errorObj);			
+								alert("Could not store person. Please contact " + contactEmail + " and supply the following message: type=" + type + ", error="+errorObj);			
 							})
 							.complete(function() {
 								$("#dialog-confirm-remove-person").dialog( "close" );			
@@ -368,13 +369,13 @@ function GlobalModel() {
 			.success(function(response) {			
 				$("#submitStatus").append(response+"done");		
 				if (response != "true") {
-					alert("Could not remove person from event. Please contact stl@taido.fi and supply the following message: response=" + response);	
+					alert("Could not remove person from event. Please contact " + contactEmail + " and supply the following message: response=" + response);	
 				}
 				mdl.events[code].splice($.inArray(person.personid, mdl.events[code]),1);
 				container.remove();
 			})
 			.fail(function(jqXHR, type, errorObj) {
-				alert("Could not remove person from event. Please contact stl@taido.fi and supply the following message: type=" + type + ", error="+errorObj);			
+				alert("Could not remove person from event. Please contact " + contactEmail + " and supply the following message: type=" + type + ", error="+errorObj);			
 			})
 			.complete(function() {
 			});
@@ -451,14 +452,14 @@ function GlobalModel() {
 						.success(function(response) {			
 							$("#submitStatus").append(response+"done");		
 							if (response != "true") {
-								alert("Could not add person to event. Please contact stl@taido.fi and supply the following message: response=" + response);	
+								alert("Could not add person to event. Please contact " + contactEmail + " and supply the following message: response=" + response);	
 								return;
 							}
 							var container = $(document.createElement('div'));					
 							mdl.updateEvent(container, mdl.people[ui.item.personid], eventContainer, comp.attr("data-code"));
 						})
 						.fail(function(jqXHR, type, errorObj) {
-							alert("Could not add person to event. Please contact stl@taido.fi and supply the following message: type=" + type + ", error="+errorObj);			
+							alert("Could not add person to event. Please contact " + contactEmail + " and supply the following message: type=" + type + ", error="+errorObj);			
 						})
 						.complete(function() {
 						});						
@@ -504,13 +505,13 @@ function GlobalModel() {
 					mdl.teams[team.teamid].component.remove();
 					delete mdl.teams[team.teamid];
 				} else {
-					alert("Could not remove team. Please contact stl@taido.fi and supply the following message: response=" + response);
+					alert("Could not remove team. Please contact " + contactEmail + " and supply the following message: response=" + response);
 				}
 				
 				
 			})
 			.fail(function(jqXHR, type, errorObj) {
-				alert("Could not remove team. Please contact stl@taido.fi and supply the following message: type=" + type + ", error="+errorObj);			
+				alert("Could not remove team. Please contact " + contactEmail + " and supply the following message: type=" + type + ", error="+errorObj);			
 			})
 			.complete(function() {
 			});			
@@ -640,7 +641,7 @@ function GlobalModel() {
 						try {
 							var teamid = jQuery.parseJSON(response);
 						} catch(exception) {
-							alert("Could not store person. Please contact stl@taido.fi and supply the following message: exception=" + exception + " response=" + response);
+							alert("Could not store person. Please contact " + contactEmail + " and supply the following message: exception=" + exception + " response=" + response);
 							return;
 						}			
 						
@@ -656,7 +657,7 @@ function GlobalModel() {
 						
 					})
 					.fail(function(jqXHR, type, errorObj) {
-						alert("Could not store person. Please contact stl@taido.fi and supply the following message: type=" + type + ", error="+errorObj);			
+						alert("Could not store person. Please contact " + contactEmail + " and supply the following message: type=" + type + ", error="+errorObj);			
 					})
 					.complete(function() {
 					});
@@ -747,7 +748,7 @@ function GlobalModel() {
 			$("#submitStatus").html(response+"done");
 		})
 		.fail(function(jqXHR, type, errorObj) {
-				$("#submitStatus").html(type + "<br>"+errorObj);
+				$("#submitStatus").html(type + "<br />"+errorObj);
 		});
 		
 		
@@ -768,7 +769,7 @@ function GlobalModel() {
 			$("#submitStatus").html(response+"done");
 		})
 		.fail(function(jqXHR, type, errorObj) {
-				$("#submitStatus").html(type + "<br>"+errorObj);
+				$("#submitStatus").html(type + "<br />"+errorObj);
 		});		
 	};
 	
@@ -789,7 +790,7 @@ function GlobalModel() {
 			$('#submitStatus').append(" Opening personal page.");						
 		})
 		.fail(function(jqXHR, type, errorObj) {
-				$("#submitStatus").html(type + "<br>"+errorObj);
+				$("#submitStatus").html(type + "<br />"+errorObj);
 		});			
 	};
 
@@ -1013,7 +1014,7 @@ $(function() {
 						matches = parseInt(response);
 					},
 				error: function(jqXHR, type, errorObj) {
-					$("#submitStatus").html(type + "<br>"+errorObj);
+					$("#submitStatus").html(type + "<br />"+errorObj);
 					},	
 				async: false
 			});       

@@ -509,7 +509,7 @@ function GlobalModel() {
 			$("#submitStatus").html(response+"done");
 		})
 		.fail(function(jqXHR, type, errorObj) {
-				$("#submitStatus").html(type + "<br>"+errorObj);
+				$("#submitStatus").html(type + "<br />"+errorObj);
 		});
 		
 		
@@ -530,7 +530,7 @@ function GlobalModel() {
 			$("#submitStatus").html(response+"done");
 		})
 		.fail(function(jqXHR, type, errorObj) {
-				$("#submitStatus").html(type + "<br>"+errorObj);
+				$("#submitStatus").html(type + "<br />"+errorObj);
 		});		
 	};
 	
@@ -552,7 +552,7 @@ function GlobalModel() {
 			$('#submitStatus').append(" Opening personal page.");						
 		})
 		.fail(function(jqXHR, type, errorObj) {
-				$("#submitStatus").html(type + "<br>"+errorObj);
+				$("#submitStatus").html(type + "<br />"+errorObj);
 		});			
 	};
 
@@ -1059,7 +1059,7 @@ $(function() {
 						matches = parseInt(response);
 					},
 				error: function(jqXHR, type, errorObj) {
-					$("#submitStatus").html(type + "<br>"+errorObj);
+					$("#submitStatus").html(type + "<br />"+errorObj);
 					},	
 				async:   false
 			});       

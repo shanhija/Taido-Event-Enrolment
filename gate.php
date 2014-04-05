@@ -1,5 +1,4 @@
 <?
-
 if (!strcmp($_SERVER['REQUEST_METHOD'],'POST'))
 	$INDATA = $_POST;
 else 
@@ -17,17 +16,20 @@ if (array_key_exists("person", $_SESSION)) {
 	$person = $result->fetch_object();
 	
 	if (!$person) {
-	?>
+    ?>
 <html>
-<script>
-	var seconds = 10;
-	setInterval(function() {
-		--seconds;
-		document.getElementById("remaining").innerHTML = seconds;
-		if (seconds == 0)
-			window.location.href= '.';			
-	}, 1000);
-</script>
+<head>
+    <script type="text/javascript">
+	    var seconds = 10;
+	    setInterval(function() {
+		    --seconds;
+		    document.getElementById("remaining").innerHTML = seconds;
+		    if (seconds == 0)
+			    window.location.href= '.';			
+	    }, 1000);
+    </script>
+    <title></title>
+</head>
 <body>
 	Your login information could not be found. Please request new login information from the register page. Redirecting in <div id="remaining" style="display: inline;">10</div> seconds...
 </body>
@@ -49,14 +51,14 @@ if (array_key_exists("page", $INDATA)) {
 			if ($person->manager >= 1) {
 				include 'manage.php';  
 			} else {
-				echo "You do not have permission to acces this page. Please contact stl@taido.fi.";
+				echo "You do not have permission to acces this page. Please contact " + $contact_email + ".";
 			}
 			break;
 		case "managereport":
 			if ($person->manager >= 1) {
 				include 'managereport.php';  
 			} else {
-				echo "You do not have permission to acces this page. Please contact stl@taido.fi.";
+				echo "You do not have permission to acces this page. Please contact " + $contact_email + ".";
 			}
 			break;
 		case "enroll":

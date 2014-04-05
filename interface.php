@@ -1,5 +1,5 @@
 <?php 
-
+    
 // $INDATA, $person and $mysqli are made available by gate.php
 
 if (array_key_exists("actor", $INDATA)) {
@@ -126,7 +126,7 @@ case "fetch":
 	
 case "fetchManage":
 	if (!($person->manager > 0)) {
-		echo "You do not have permission to access this page. Please contact stl@taido.fi.";
+		echo "You do not have permission to access this page. Please contact " + $contact_email + ".";
 		exit();
 	}
 	
@@ -168,7 +168,7 @@ case "fetchManage":
 	
 case "fetchPerson":
 	if (!($person->manager > 0)) {
-		echo "You do not have permission to access this page. Please contact stl@taido.fi.";
+		echo "You do not have permission to access this page. Please contact " + $contact_email + ".";
 		exit();
 	}
 	
@@ -182,7 +182,7 @@ case "fetchPerson":
 	
 case "removeFromEvent":
 	if (!($person->manager > 0)) {
-		echo "You do not have permission to access this page. Please contact stl@taido.fi.";
+		echo "You do not have permission to access this page. Please contact " + $contact_email + ".";
 		exit();
 	}
 		
@@ -198,7 +198,7 @@ case "removeFromEvent":
 
 case "addToEvent":
 	if (!($person->manager > 0)) {
-		echo "You do not have permission to access this page. Please contact stl@taido.fi.";
+		echo "You do not have permission to access this page. Please contact " + $contact_email + ".";
 		exit();
 	}
 		
@@ -214,7 +214,7 @@ case "addToEvent":
 	
 case "addTeam":
 	if (!($person->manager > 0)) {
-		echo "You do not have permission to access this page. Please contact stl@taido.fi.";
+		echo "You do not have permission to access this page. Please contact " + $contact_email + ".";
 		exit();
 	}
 	$data = json_decode($INDATA["data"]);	
@@ -237,7 +237,7 @@ case "addTeam":
 	
 case "removeTeam":
 	if (!($person->manager > 0)) {
-		echo "You do not have permission to access this page. Please contact stl@taido.fi.";
+		echo "You do not have permission to access this page. Please contact " + $contact_email + ".";
 		exit();
 	}
 	$teamid = $mysqli->real_escape_string($INDATA["data"]);	
@@ -261,7 +261,7 @@ case "removeTeam":
 case "removePerson": 					
 	
 	if (!($person->manager > 0)) {
-		echo "You do not have permission to access this page. Please contact stl@taido.fi.";
+		echo "You do not have permission to access this page. Please contact " + $contact_email + ".";
 		exit();
 	}		
 	
@@ -280,7 +280,7 @@ case "removePerson":
 case "storePerson": 					
 	
 	if (!($person->manager > 0)) {
-		echo "You do not have permission to access this page. Please contact stl@taido.fi.";
+		echo "You do not have permission to access this page. Please contact " + $contact_email + ".";
 		exit();
 	}	
 	
@@ -307,6 +307,7 @@ case "storePerson":
 	} else {
 		$stmt = $mysqli->prepare("INSERT tee_people SET loginid=?, lastName=?, firstName=?, email=?, birthDay=?, birthMonth=?, birthYear=?, sex=?, taidoRank=?, lastNameGanji=?, firstNameGanji=?, nationality=?, role=?") or die($mysqli->error);	
 
+        //TODO: Can we use $str_event_short here? Is it appropriate?
 		$loginid = md5("wtc2013" . date("F j, Y, g:i a") . $mysqli->real_escape_string($data->email));
 		
 		$stmt->bind_param("ssssiiissssss", 
@@ -336,6 +337,7 @@ case "storePerson":
 	$result = $mysqli->query("SELECT * FROM tee_people WHERE personid=".$data->personid) or die($mysqli->error);
 	echo json_encode($result->fetch_object());
 	break;
+    
 case "submit": 				
 	
 	// Store submitted data just in case
@@ -556,6 +558,7 @@ case "submit":
 	// Find updated date
 	echo json_encode($modified);	
 	break;
+    
 case "retract":
 	$mysqli->query("DELETE FROM tee_events WHERE personid=".$person->personid);
 	$mysqli->query("DELETE FROM tee_players WHERE personid=".$person->personid);
@@ -569,6 +572,7 @@ case "retract":
 	$result = $mysqli->query("SELECT status,modified FROM tee_people WHERE personid=".$person->personid) or die($mysqli->error);
 	echo json_encode($result->fetch_object());	
 	break;
+    
 case "cache":
 	$_SESSION["data"] = $INDATA["data"];
 	echo "true";
@@ -585,7 +589,7 @@ function expandEventName($code) {
 	$event = new stdClass();
 	if ($code[0] == 'A') {
 	} elseif ($code[0] == 'B') {
-		$event->category = "Interantional Frienship Games 2013";
+		$event->category = "International Frienship Games 2013";
 		switch ($code) {
 		case "B19": $event->event = "B19 Dantai hokei"; break;
 		case "B20": $event->event = "B20 Dantai jissen, men"; break;
@@ -614,14 +618,14 @@ Dear '. $person->firstName . ' ' . $person->lastName .',
 '.$who->firstName .' '. $who->lastName .' has added you to the '. $event->category . ' ' . $event->event .' team "' . $team->name .'".
 
 Sincerely yours,
-WTC2013 web team';
+' . $str_event_short . ' web team';
 	$topic = 'Added to ' . $event->event . ' team ' .$team->name;
 	
 	$headers = array(
-		'From: stl@taido.fi',
+		'From: ' . $contact_email,
         'Content-type: text/plain; charset="UTF-8";',		
 //		'Content-type: text/plain; charset=iso-8859-1',	
-		'Reply-To: stl@taido.fi',
+		'Reply-To: ' . $contact_email,
 		'X-Mailer: PHP/' . phpversion());
 
 	if (!mail($person->email, $topic, $message, implode("\r\n", $headers))) {
@@ -648,14 +652,14 @@ function sendRemoveReport($mysqli, $person, $team, $who) {
 '.$who->firstName .' '. $who->lastName .' has removed you from the '. $event->category . ' ' . $event->event .' team "' . $team->name .'".
 
 Sincerely yours,
-WTC2013 web team';
+' . $str_event_short . ' web team';
 	$topic = 'Removed from ' . $event->event . ' team ' .$team->name;
 	
 	$headers = array(
-		'From: stl@taido.fi',
+		'From: ' . $contact_email,
         'Content-type: text/plain; charset="UTF-8";',		
 //		'Content-type: text/plain; charset=iso-8859-1',	
-		'Reply-To: stl@taido.fi',
+		'Reply-To: ' . $contact_email,
 		'X-Mailer: PHP/' . phpversion());
 
 	if (!mail($person->email, $topic, $message, implode("\r\n", $headers))) {
@@ -684,14 +688,14 @@ Summary of your enrollment:
 '.$report.'
 
 Sincerely yours,
-WTC2013 web team';
+' . $str_event_short . ' web team';
 
 	$topic = "WTC2013 enrollment summary";
 	$headers = array(
-		'From: stl@taido.fi',
+		'From: ' . $contact_email,
         'Content-type: text/plain; charset="UTF-8";',		
 //		'Content-type: text/plain; charset=iso-8859-1',	
-		'Reply-To: stl@taido.fi',
+		'Reply-To: ' . $contact_email,
 		'X-Mailer: PHP/' . phpversion());	
 	if (!mail($person->email, $topic, $message, implode("\r\n", $headers))) {
 		$error = error_get_last();
