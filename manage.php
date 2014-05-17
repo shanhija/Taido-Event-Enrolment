@@ -1,3 +1,7 @@
+<?php
+include "settings.php"; 
+?>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>
@@ -8,7 +12,7 @@
 	<link href="css/tee.css" rel="stylesheet" type="text/css" />
 	<link href="css/tee_manager.css" rel="stylesheet" type="text/css" />
 
-    <title><?php $str_event_short ?> Enrollment - Manage</title>
+    <title><?php echo $str_event_short ?> Enrollment - Manage</title>
 </head>
 <body>
 <div class="wrapper">
@@ -43,15 +47,16 @@
 		    <div id="peopleTable">
 			    <img src="images/ajax-loader.gif" alt="Loading" />
 		    </div>
-	    </div>	
+	    </div>
+        <!-- =========================================================== -->
 	    <div class="page" id="wtcIndividualPage">
 		    <h1>Individual WTC events</h1>
 		    <p>
-			    This page allows you to assign competitors to the WTC events. A person can enroll to an event only if they have been assigned 
+			    This page allows you to assign competitors to the <?php echo $str_event_short ?> events. A person can enroll to an event only if they have been assigned 
                 the "WTC Competor" role and their taido rank and birth year meet the required criteria. In some cases, if a person is very young 
                 or has a low taido rank, a letter of recommendation (LOR) may be required. LOR should be sent by email to the 
-                <?php $contact_name ?> (<a href="mailto:<?php $contact_email ?>"><?php $contact_email ?></a>) preferably before the submission 
-                deadline ends. All applicants are documented and reviewed by both the <?php $contact_name ?> and the World Taido Federation.
+                <?php echo $contact_name ?> (<a href="mailto:<?php echo $contact_email ?>"><?php echo $contact_email ?></a>) preferably before the submission 
+                deadline ends. All applicants are documented and reviewed by both the <?php echo $contact_name ?> and the World Taido Federation.
 		    </p>
 		    <div id="events">
 			    <span class="eventTitle">A1 Hokei, men</span>
@@ -87,10 +92,11 @@
 			
 		    </div>
 	    </div>	
-	    <div class="page" id="wtcTeamPage">
+        <!-- =========================================================== -->
+        <div class="page" id="wtcTeamPage">
 		    <h1>Team events</h1>
 		    <p>
-			    You can edit the people enrolled to the team events of WTC 2013. When a person is selected to a team, he or she are automatically 
+			    You can edit the people enrolled to the team events of <?php echo $str_event_short ?>. When a person is selected to a team, he or she are automatically 
                 enrolled to the event. Conversely, when he or she is removed from a team, his or her enrollment to the event will be automatically 
                 removed.			
 		    </p>
@@ -98,8 +104,8 @@
 			    A person can be included in a team only if they have been assigned the "WTC Competor" role and their taido rank and birth year 
                 meet the required criteria. However, these requirements do not apply to leaders and hence you can add any enrolled person as a 
                 team leader. Also, in some cases, if a person is very young or has a low taido rank, a letter of recommendation (LOR) may be 
-                required. LOR should be sent by email to the <?php $contact_name ?> (<a href="mailto:<?php $contact_email ?>"><?php $contact_email ?></a>) 
-                preferably before the submission deadline ends. All applicants are documented and reviewed by both the <?php $contact_name ?> and 
+                required. LOR should be sent by email to the <?php echo $contact_name ?> (<a href="mailto:<?php echo $contact_email ?>"><?php echo $contact_email ?></a>) 
+                preferably before the submission deadline ends. All applicants are documented and reviewed by both the <?php echo $contact_name ?> and 
                 the World Taido Federation.		
 		    </p>
 		
@@ -133,6 +139,7 @@
 		    <div class="clearfloat"></div>
 		    <div class="eventList" id="eventA10teams"><img src="images/ajax-loader.gif" alt="Loading" /></div>		
 	    </div>	
+        <!-- =========================================================== -->
 	    <div class="page" id="reportsPage">
 		    <h1>Reports of all enrollments</h1>
 		
@@ -165,7 +172,7 @@
 
 	<div id="footer">
 		<div id="footerLeft">
-			Help? <a href="mailto:<?php $contact_email ?>"><?php $contact_email ?></a>
+			Help? <a href="mailto:<?php echo $contact_email ?>"><?php echo $contact_email ?></a>
 		</div>
 		<div id="footerRight">
 			<a href="http://www.motify.fi" target="_blank"><img src="images/logo-small.png" alt="Motify" /></a>			
@@ -181,7 +188,7 @@
         people will be able to add you to their teams.
 	</p>	
 	<p>
-	    You may update your submission or retract it at any time before the submission deadline <?php $submission_deadline ?>.
+	    You may update your submission or retract it at any time before the submission deadline <?php echo $submission_deadline ?>.
 	</p>
 </div>
 
@@ -190,7 +197,7 @@
         Do you really want to retract your submission? You will be removed from any IFG dantai or tenkai teams you might be selected in.
 	</p>	
 	<p>
-		You may resubmit at any time before the submission deadline <?php $submission_deadline ?>.
+		You may resubmit at any time before the submission deadline <?php echo $submission_deadline ?>.
 	</p>
 </div>
 
@@ -257,7 +264,8 @@
 		</label>		
 	</form>
 	<p>
-	Note! When the personal information is changed, the enrollment to events are updated accordingly without additional notification. For example, if sex is changed from male to female, all enrollments to male events will be removed automatically, including corresponding teams.
+	    Note! When the personal information is changed, the enrollment to events are updated accordingly without additional notification. 
+        For example, if sex is changed from male to female, all enrollments to male events will be removed automatically, including corresponding teams.
 	</p>
 </div>
 
@@ -272,47 +280,37 @@
 </div>
 
 <div id="dialog-add-team" title="Add a new team" class="dialog">
-	<label for="teamName"><span class="title">Team name</span>
-		<input type="text" name="teamName" id="teamName" />
-		<div id="teamName_loading" class="loading"><img src="images/ajax-loader.gif" alt="Loader" /></div>
-		<div id="teamName_nameok" class="nameok"><img src="images/tick.png" alt="Tick" /></div>
-	</label>	
+	<label for="teamName"><span class="title">Team name</span></label>
+	<input type="text" name="teamName" id="teamName" />
+	<div id="teamName_loading" class="loading"><img src="images/ajax-loader.gif" alt="Loader" /></div>
+	<div id="teamName_nameok" class="nameok"><img src="images/tick.png" alt="Tick" /></div>
+		
+	<label for="lead"><span class="title">Leader</span></label>
+	<div class="selectPerson" data-position="lead"></div>	
 	
-	<label for="lead"><span class="title">Leader</span>
-		<div class="selectPerson" data-position="lead"></div>
-	</label>
+	<label for="p1"><span class="title">Player 1</span></label>
+	<div class="selectPerson" data-position="p1"></div>
+
+	<label for="p2"><span class="title">Player 2</span></label>
+	<div class="selectPerson" data-position="p2"></div>
+
+	<label for="p3"><span class="title">Player 3</span></label>
+	<div class="selectPerson" data-position="p3"></div>
+
+	<label for="p4"><span class="title">Player 4</span></label>
+	<div class="selectPerson" data-position="p4"></div>
+
+	<label for="p5"><span class="title">Player 5</span></label>
+	<div class="selectPerson" data-position="p5"></div>
+
+	<label for="p6"><span class="title">Player 6</span></label>
+	<div class="selectPerson" data-position="p6"></div>
 	
-	<label for="p1"><span class="title">Player 1</span>
-		<div class="selectPerson" data-position="p1"></div>
-	</label>
-
-	<label for="p2"><span class="title">Player 2</span>
-		<div class="selectPerson" data-position="p2"></div>
-	</label>
-
-	<label for="p3"><span class="title">Player 3</span>
-		<div class="selectPerson" data-position="p3"></div>
-	</label>
-
-	<label for="p4"><span class="title">Player 4</span>
-		<div class="selectPerson" data-position="p4"></div>
-	</label>
-
-	<label for="p5"><span class="title">Player 5</span>
-		<div class="selectPerson" data-position="p5"></div>
-	</label>
-
-	<label for="p6"><span class="title">Player 6</span>
-		<div class="selectPerson" data-position="p6"></div>
-	</label>
+	<label for="r1"><span class="title">Reserve 1</span></label>
+	<div class="selectPerson" data-position="r1"></div>
 	
-	<label for="r1"><span class="title">Reserve 1</span>
-		<div class="selectPerson" data-position="r1"></div>
-	</label>
-	
-	<label for="r2"><span class="title">Reserve 2</span>
-		<div class="selectPerson" data-position="r2"></div>
-	</label>
+	<label for="r2"><span class="title">Reserve 2</span></label>
+	<div class="selectPerson" data-position="r2"></div>
 </div>
 
 <div id="submitStatus"></div>			

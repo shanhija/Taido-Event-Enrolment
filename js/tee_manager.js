@@ -70,6 +70,7 @@ function SelectPersonWidget(component, model) {
 };
 
 
+//TODO: These rules should be moved to a configuration which could be used for rendering input form and summary as well as rule enforcement in this script
 var wtcEventRules = [
 	// Event code, title, sex, max birth year, soft max birth year, min belt, soft min belt, all inclusive
 	["A1", "Hokei, men", "male", 1997, 1997, -4, 1],

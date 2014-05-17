@@ -4,6 +4,7 @@ if (!strcmp($_SERVER['REQUEST_METHOD'],'POST'))
 else 
 	$INDATA = $_GET;
 
+include 'settings.php';
 include 'database.php';
 session_start();
 

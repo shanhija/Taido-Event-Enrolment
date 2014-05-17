@@ -307,8 +307,7 @@ case "storePerson":
 	} else {
 		$stmt = $mysqli->prepare("INSERT tee_people SET loginid=?, lastName=?, firstName=?, email=?, birthDay=?, birthMonth=?, birthYear=?, sex=?, taidoRank=?, lastNameGanji=?, firstNameGanji=?, nationality=?, role=?") or die($mysqli->error);	
 
-        //TODO: Can we use $str_event_short here? Is it appropriate?
-		$loginid = md5("wtc2013" . date("F j, Y, g:i a") . $mysqli->real_escape_string($data->email));
+		$loginid = md5($str_event_short . date("F j, Y, g:i a") . $mysqli->real_escape_string($data->email));
 		
 		$stmt->bind_param("ssssiiissssss", 
 			$loginid,

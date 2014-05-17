@@ -229,7 +229,7 @@
       </g>
     </g>
     <g text-rendering="geometricPrecision" stroke-miterlimit="1.45" shape-rendering="geometricPrecision" font-family="sans-serif" transform="matrix(1,0,0,1,-77,16)" stroke-linecap="butt">
-      <text x="978.643" xml:space="preserve" y="284.7764" clip-path="url(#clipPath2)" stroke="none">wtc_people</text>
+      <text x="978.643" xml:space="preserve" y="284.7764" clip-path="url(#clipPath2)" stroke="none">tee_people</text>
     </g>
     <g fill="url(#linearGradient5)" text-rendering="geometricPrecision" shape-rendering="geometricPrecision" transform="matrix(1,0,0,1,-77,16)" stroke="url(#linearGradient5)">
       <rect x="283.8661" y="423.6968" clip-path="url(#clipPath2)" width="120" rx="15" ry="15" height="30" stroke="none"/>
@@ -375,7 +375,7 @@
       </g>
     </g>
     <g text-rendering="geometricPrecision" stroke-miterlimit="1.45" shape-rendering="geometricPrecision" font-family="sans-serif" transform="matrix(1,0,0,1,-77,16)" stroke-linecap="butt">
-      <text x="361.7685" xml:space="preserve" y="667.9689" clip-path="url(#clipPath2)" stroke="none">wtc_teams</text>
+      <text x="361.7685" xml:space="preserve" y="667.9689" clip-path="url(#clipPath2)" stroke="none">tee_teams</text>
     </g>
     <g shape-rendering="geometricPrecision" text-rendering="geometricPrecision" transform="matrix(1,0,0,1,404.0924,616.5527)">
       <g clip-path="url(#clipPath6)">
@@ -486,7 +486,7 @@
       </g>
     </g>
     <g text-rendering="geometricPrecision" stroke-miterlimit="1.45" shape-rendering="geometricPrecision" font-family="sans-serif" transform="matrix(1,0,0,1,-77,16)" stroke-linecap="butt">
-      <text x="470.7028" xml:space="preserve" y="666.2302" clip-path="url(#clipPath2)" stroke="none">wtc_events</text>
+      <text x="470.7028" xml:space="preserve" y="666.2302" clip-path="url(#clipPath2)" stroke="none">tee_events</text>
     </g>
     <g shape-rendering="geometricPrecision" text-rendering="geometricPrecision" transform="matrix(1,0,0,1,734.9117,616.5527)">
       <g clip-path="url(#clipPath7)">
@@ -597,7 +597,7 @@
       </g>
     </g>
     <g text-rendering="geometricPrecision" stroke-miterlimit="1.45" shape-rendering="geometricPrecision" font-family="sans-serif" transform="matrix(1,0,0,1,-77,16)" stroke-linecap="butt">
-      <text x="795.188" xml:space="preserve" y="666.2302" clip-path="url(#clipPath2)" stroke="none">wtc_variables</text>
+      <text x="795.188" xml:space="preserve" y="666.2302" clip-path="url(#clipPath2)" stroke="none">tee_variables</text>
     </g>
     <g shape-rendering="geometricPrecision" text-rendering="geometricPrecision" transform="matrix(1,0,0,1,624.6386,616.5527)">
       <g clip-path="url(#clipPath8)">
@@ -708,7 +708,7 @@
       </g>
     </g>
     <g text-rendering="geometricPrecision" stroke-miterlimit="1.45" shape-rendering="geometricPrecision" font-family="sans-serif" transform="matrix(1,0,0,1,-77,16)" stroke-linecap="butt">
-      <text x="695.916" xml:space="preserve" y="666.2302" clip-path="url(#clipPath2)" stroke="none">wtc_hotel</text>
+      <text x="695.916" xml:space="preserve" y="666.2302" clip-path="url(#clipPath2)" stroke="none">tee_hotel</text>
     </g>
     <g shape-rendering="geometricPrecision" text-rendering="geometricPrecision" transform="matrix(1,0,0,1,514.3655,616.5527)">
       <g clip-path="url(#clipPath9)">
@@ -819,7 +819,7 @@
       </g>
     </g>
     <g text-rendering="geometricPrecision" stroke-miterlimit="1.45" shape-rendering="geometricPrecision" font-family="sans-serif" transform="matrix(1,0,0,1,-77,16)" stroke-linecap="butt">
-      <text x="579.3118" xml:space="preserve" y="666.2302" clip-path="url(#clipPath2)" stroke="none">wtc_players</text>
+      <text x="579.3118" xml:space="preserve" y="666.2302" clip-path="url(#clipPath2)" stroke="none">tee_players</text>
     </g>
     <g text-rendering="geometricPrecision" stroke-miterlimit="1.45" shape-rendering="geometricPrecision" transform="matrix(1,0,0,1,-77,16)" stroke-linecap="butt">
       <path fill="none" d="M482.8217 39.1504 L613.2762 39.1504" clip-path="url(#clipPath2)"/>

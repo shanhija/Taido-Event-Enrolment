@@ -33,7 +33,7 @@ $xls->getProperties()->setDescription("");
 switch ($INDATA['report']) {
 
 case "people":
-	$query = "SELECT personid, firstName, lastName, nationality, sex, birthDay, birthMonth, birthYear, taidoRank, email, package, role FROM wtc_people WHERE status='Submitted'";
+	$query = "SELECT personid, firstName, lastName, nationality, sex, birthDay, birthMonth, birthYear, taidoRank, email, package, role FROM tee_people WHERE status='Submitted'";
 	if ($person->manager == 1) {
 		$query.= " AND nationality='".$person->nationality."'";
 		$reportName .= "_".$person->nationality;
@@ -42,7 +42,7 @@ case "people":
 		echo "You do not have the right to access this page.";
 		exit();
 	}
-	$query.= " ORDER BY wtc_people.lastName";
+	$query.= " ORDER BY tee_people.lastName";
 	
 	$result = $mysqli->query($query) or die($mysqli->error);
 
@@ -61,7 +61,7 @@ case "people":
 		
 		$row["taidoRank"] = rankNumToStr($row["taidoRank"]);
 		
-		$dojoResult = $mysqli->query("SELECT value FROM wtc_variables WHERE personid=".$row["personid"]." AND variable='dojo'") or die($mysqli->error);
+		$dojoResult = $mysqli->query("SELECT value FROM tee_variables WHERE personid=".$row["personid"]." AND variable='dojo'") or die($mysqli->error);
 		
 		if ($dojoRow = $dojoResult->fetch_assoc()) {
 			$row[] = $dojoRow["value"];
@@ -90,20 +90,20 @@ case "wtcPeople":
 
 	for($event = 1; $event <= 10; ++$event) {	
 		$query = 'SELECT 
-			wtc_people.personid AS personid, 
-			wtc_people.firstName AS firstName, 
-			wtc_people.lastName AS lastName, 
-			wtc_people.nationality AS nationality, 
-			wtc_people.birthYear AS birthYear, 
-			wtc_people.taidoRank AS taidoRank 
-			FROM wtc_people
-			JOIN wtc_events ON wtc_people.personid=wtc_events.personid
-			WHERE wtc_events.event="A'.$event.'"';
+			tee_people.personid AS personid, 
+			tee_people.firstName AS firstName, 
+			tee_people.lastName AS lastName, 
+			tee_people.nationality AS nationality, 
+			tee_people.birthYear AS birthYear, 
+			tee_people.taidoRank AS taidoRank 
+			FROM tee_people
+			JOIN tee_events ON tee_people.personid=tee_events.personid
+			WHERE tee_events.event="A'.$event.'"';
 			
 		if ($person->manager == 1) {
-			$query.= " AND wtc_people.nationality='".$person->nationality."'";			
+			$query.= " AND tee_people.nationality='".$person->nationality."'";			
 		}
-		$query.= " ORDER BY wtc_people.lastName";
+		$query.= " ORDER BY tee_people.lastName";
 		$result = $mysqli->query($query) or die($mysqli->error);
 
 		if ($firstSheet) {
@@ -148,20 +148,20 @@ case "ifgPeople":
 	
 	for($event = 1; $event <= 23; ++$event) {	
 		$query = 'SELECT 
-			wtc_people.personid AS personid, 
-			wtc_people.firstName AS firstName, 
-			wtc_people.lastName AS lastName, 
-			wtc_people.nationality AS nationality, 
-			wtc_people.birthYear AS birthYear, 
-			wtc_people.taidoRank AS taidoRank 
-			FROM wtc_people
-			JOIN wtc_events ON wtc_people.personid=wtc_events.personid
-			WHERE wtc_events.event="B'.$event.'"';
+			tee_people.personid AS personid, 
+			tee_people.firstName AS firstName, 
+			tee_people.lastName AS lastName, 
+			tee_people.nationality AS nationality, 
+			tee_people.birthYear AS birthYear, 
+			tee_people.taidoRank AS taidoRank 
+			FROM tee_people
+			JOIN tee_events ON tee_people.personid=tee_events.personid
+			WHERE tee_events.event="B'.$event.'"';
 			
 		if ($person->manager == 1) {
-			$query.= " AND wtc_people.nationality='".$person->nationality."'";			
+			$query.= " AND tee_people.nationality='".$person->nationality."'";			
 		}
-		$query.= " ORDER BY wtc_people.lastName";
+		$query.= " ORDER BY tee_people.lastName";
 		$result = $mysqli->query($query) or die($mysqli->error);
 
 		if ($firstSheet) {
@@ -207,24 +207,24 @@ case "hotel":
 	
 	$query = '
 		SELECT 
-		wtc_hotel.personid AS personid,
-		wtc_people.firstName AS firstName,
-		wtc_people.lastName as lastName,
-		wtc_people.nationality AS nationality,
-		wtc_hotel.nights AS nights,
-		wtc_hotel.type AS type,
-		wtc_hotel.accompany AS accompany,
-		wtc_hotel.address AS address,
-		wtc_hotel.passportNumber as passportNumber,
-		wtc_hotel.additional AS additional
-		FROM wtc_hotel 
-		JOIN wtc_people ON wtc_people.personid=wtc_hotel.personid';
+		tee_hotel.personid AS personid,
+		tee_people.firstName AS firstName,
+		tee_people.lastName as lastName,
+		tee_people.nationality AS nationality,
+		tee_hotel.nights AS nights,
+		tee_hotel.type AS type,
+		tee_hotel.accompany AS accompany,
+		tee_hotel.address AS address,
+		tee_hotel.passportNumber as passportNumber,
+		tee_hotel.additional AS additional
+		FROM tee_hotel 
+		JOIN tee_people ON tee_people.personid=tee_hotel.personid';
 
 		
 	if ($person->manager == 1) {
-		$query.= " WHERE wtc_people.nationality='".$person->nationality."'";			
+		$query.= " WHERE tee_people.nationality='".$person->nationality."'";			
 	}
-	$query.= " ORDER BY wtc_people.lastName";
+	$query.= " ORDER BY tee_people.lastName";
 	$result = $mysqli->query($query) or die($mysqli->error);
 
 	$xls->setActiveSheetIndex(0);
@@ -235,7 +235,8 @@ case "hotel":
 		if ($rowid==1) {
 			$keys = array_keys($row);
 			unset($keys[array_search("nights",$keys)]);
-			// Add row names							
+			// Add row names
+            // TODO: Change!
 			$days = array("Tue 30.7.", "Wed 31.7.", "Thu 1.8.", "Fri 2.8.", "Sat 3.8.", "Sun 4.8.");
 			$keys = array_merge($keys, $days);
 			
@@ -268,7 +269,7 @@ case "volunteer":
 	// Fetch volunteer names
 	$query = 'SELECT
 		DISTINCT(variable) AS variable
-		FROM wtc_variables
+		FROM tee_variables
 		WHERE variable LIKE "volunteer%"';
 	$result = $mysqli->query($query) or die($mysqli->error);
 	$keys = array("personid" => 0, "lastName" => 1, "firstName" => 2, "email" => 3, "nationality" => 4, "package" => 5, "ifgEvents" => 6);
@@ -278,19 +279,19 @@ case "volunteer":
 	
 	$query = '
 		SELECT 
-		wtc_people.personid AS personid, 
-		wtc_people.lastName AS lastName, 
-		wtc_people.firstName AS firstName, 
-		wtc_people.email AS email,
-		wtc_people.nationality AS nationality, 		
-		wtc_people.package AS package,
-		COUNT(wtc_events.event) AS ifgEvents
-		FROM wtc_people 
-		LEFT JOIN wtc_events ON wtc_people.personid=wtc_events.personid 
-		WHERE wtc_people.role <> "wtc" OR wtc_people.role IS NULL
-		AND wtc_people.status="Submitted"
-		GROUP BY wtc_people.personid
-		ORDER BY wtc_people.lastName';
+		tee_people.personid AS personid, 
+		tee_people.lastName AS lastName, 
+		tee_people.firstName AS firstName, 
+		tee_people.email AS email,
+		tee_people.nationality AS nationality, 		
+		tee_people.package AS package,
+		COUNT(tee_events.event) AS ifgEvents
+		FROM tee_people 
+		LEFT JOIN tee_events ON tee_people.personid=tee_events.personid 
+		WHERE tee_people.role <> "wtc" OR tee_people.role IS NULL
+		AND tee_people.status="Submitted"
+		GROUP BY tee_people.personid
+		ORDER BY tee_people.lastName';
 		
 	$result = $mysqli->query($query) or die($mysqli->error);
 
@@ -302,7 +303,7 @@ case "volunteer":
 	while ($row = $result->fetch_assoc()) {
 		
 		$sheet->fromArray($row, null, "A" . $rowid);
-		$query = "SELECT variable FROM wtc_variables WHERE personid=".$row["personid"]." AND variable LIKE 'volunteer%'";
+		$query = "SELECT variable FROM tee_variables WHERE personid=".$row["personid"]." AND variable LIKE 'volunteer%'";
 		$volresult = $mysqli->query($query) or die($mysqli->error);
 		while ($vol = $volresult->fetch_assoc()) {
 			$sheet->setCellValueByColumnAndRow($keys[substr($vol["variable"],9)], $rowid, 1);
@@ -326,7 +327,7 @@ case "statistics":
 	$query = 'SELECT 
 		nationality, 
 		count(personid) AS count
-		FROM wtc_people 
+		FROM tee_people 
 		WHERE status="Submitted" 
 		GROUP BY nationality
 		ORDER BY nationality';
@@ -353,7 +354,7 @@ case "statistics":
 	$query = 'SELECT
 		package,
 		count(personid) AS count
-		FROM wtc_people
+		FROM tee_people
 		WHERE status="Submitted"
 		GROUP BY package
 		ORDER BY package';
@@ -373,7 +374,7 @@ case "statistics":
 	$query = 'SELECT
 		event,
 		count(personid) AS count
-		FROM wtc_events
+		FROM tee_events
 		GROUP BY event
 		ORDER BY event';
 	$result = $mysqli->query($query) or die($mysqli->error);
@@ -388,12 +389,12 @@ case "statistics":
 	$query = 'SELECT
 		type,
 		count(personid) AS count
-		FROM wtc_hotel
+		FROM tee_hotel
 		GROUP BY type
 		ORDER BY type';
 	$result = $mysqli->query($query) or die($mysqli->error);
 	while ($row = $result->fetch_assoc()) {				
-		$nightsResult = $mysqli->query('SELECT nights FROM wtc_hotel WHERE type="'.$row["type"].'"') or die($mysqli->error);
+		$nightsResult = $mysqli->query('SELECT nights FROM tee_hotel WHERE type="'.$row["type"].'"') or die($mysqli->error);
 		$total = 0;		
 		while ($nights = $nightsResult->fetch_assoc()) {
 			$total += substr_count($nights["nights"], "1");
@@ -409,7 +410,7 @@ case "statistics":
 	$query = 'SELECT
 		variable, 
 		COUNT(personid) AS count
-		FROM wtc_variables
+		FROM tee_variables
 		WHERE value="yes"
 		GROUP BY variable';
 	$result = $mysqli->query($query) or die($mysqli->error);
@@ -525,7 +526,7 @@ case "all":
 		$emptyRow[$key] = "";
 	}
 	
-	$query = "SELECT * FROM wtc_people WHERE status='Submitted'";
+	$query = "SELECT * FROM tee_people WHERE status='Submitted'";
 	if (($person->manager == 1)) {
 		$query .= "AND nationality='".$person->nationality."'";
 	}
@@ -555,9 +556,9 @@ case "all":
 		$row["taidoRank"] = rankNumToStr($row["taidoRank"]);
 
 		// Events
-		$eventResult = $mysqli->query("SELECT event FROM wtc_events WHERE personid=".$row["personid"]) or die($mysqli->error);
+		$eventResult = $mysqli->query("SELECT event FROM tee_events WHERE personid=".$row["personid"]) or die($mysqli->error);
 		while ($eventRow = $eventResult->fetch_assoc()) {
-			$posResult = $mysqli->query("SELECT position FROM wtc_players JOIN wtc_teams ON wtc_teams.teamid=wtc_players.teamid WHERE event='".$eventRow["event"]."' AND personid=".$row["personid"]) or die($mysqli->error);
+			$posResult = $mysqli->query("SELECT position FROM tee_players JOIN tee_teams ON tee_teams.teamid=tee_players.teamid WHERE event='".$eventRow["event"]."' AND personid=".$row["personid"]) or die($mysqli->error);
 			$value = "yes";
 			if ($posRow = $posResult->fetch_assoc()) {
 				$value = $posRow["position"];
@@ -572,7 +573,7 @@ case "all":
 		}
 		
 		// Hotel
-		$hotelResult = $mysqli->query("SELECT * FROM wtc_hotel WHERE personid=".$row["personid"]) or die($mysqli->error);
+		$hotelResult = $mysqli->query("SELECT * FROM tee_hotel WHERE personid=".$row["personid"]) or die($mysqli->error);
 		if ($hotelRow = $hotelResult->fetch_assoc()) {
 			$nights = $hotelRow["nights"];
 			for ($i = 0; $i < strlen($nights); ++$i) {
@@ -587,7 +588,7 @@ case "all":
 		}
 		
 		// Variables
-		$varResult = $mysqli->query("SELECT variable,value FROM wtc_variables WHERE personid=".$row["personid"]) or die($mysqli->error);
+		$varResult = $mysqli->query("SELECT variable,value FROM tee_variables WHERE personid=".$row["personid"]) or die($mysqli->error);
 		while ($varRow = $varResult->fetch_assoc()) {
 			if (array_key_exists($varRow["variable"], $row)) {
 				$row[$varRow["variable"]] = $varRow["value"];
@@ -603,16 +604,16 @@ case "all":
 	$sheet->setAutoFilterByColumnAndRow(0,2,count($fields)-1,2);
 
 	$sheet = $xls->createSheet();
-	$query = "SELECT * FROM wtc_teams";
+	$query = "SELECT * FROM tee_teams";
 	if ($person->manager==1) {
 		$query = "
 			SELECT *				
-			FROM wtc_teams 
+			FROM tee_teams 
 			WHERE teamid IN 
 				(SELECT DISTINCT(teamid) 
-				 FROM wtc_players 
-				 JOIN wtc_people ON wtc_players.personid=wtc_people.personid 
-				 WHERE wtc_people.nationality='".$person->nationality."')";
+				 FROM tee_players 
+				 JOIN tee_people ON tee_players.personid=tee_people.personid 
+				 WHERE tee_people.nationality='".$person->nationality."')";
 	}
 	$teamResult = $mysqli->query($query) or die($mysqli->error);
 	$teamFields = array(
@@ -658,12 +659,12 @@ case "all":
 		
 		$playerResult = $mysqli->query("
 			SELECT 
-				wtc_people.personid,
+				tee_people.personid,
 				position,
 				CONCAT(lastName, ' ', firstName) AS name
-			FROM wtc_players
-			JOIN wtc_people ON wtc_players.personid=wtc_people.personid
-			WHERE wtc_players.teamid=".$teamRow["teamid"]) or die($mysqli->error);
+			FROM tee_players
+			JOIN tee_people ON tee_players.personid=tee_people.personid
+			WHERE tee_players.teamid=".$teamRow["teamid"]) or die($mysqli->error);
 		while ($playerRow = $playerResult->fetch_assoc()) {
 			if (array_key_exists($playerRow["position"], $row)) {
 				// Only include appropriate positions

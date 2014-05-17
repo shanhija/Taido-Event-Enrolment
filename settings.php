@@ -1,13 +1,13 @@
 <?php
 
-$str_event_name = "World Taido Championships 2013";
-$str_event_short = "WTC2013";
+$str_event_name = "European Taido Championships 2015";
+$str_event_short = "ETC2015";
 
-$contact_email = "stl@taido.fi";
-$contact_name = "Finnish Taido Association";
+$contact_email = "info@etc2015.se";
+$contact_name = "Swedish Taido Association";
 
-$enrollment_base_url = "http://www.taido.org/wtc2013/";
+$enrollment_base_url = "http://www.etc2015.se/enroll/";
 
-$submission_deadline = "15.4.2013";
+$submission_deadline = "2015-04-15";
 
 ?>

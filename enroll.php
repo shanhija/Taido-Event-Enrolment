@@ -1,3 +1,7 @@
+<?php
+include "settings.php"; 
+?>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>
@@ -7,7 +11,7 @@
 	<script type="text/javascript" src="js/tee.js"></script>		
 	<link href="css/tee.css" rel="stylesheet" type="text/css" />
     
-    <title><?php $str_event_short ?> Enrollment - Form</title>
+    <title><?php echo $str_event_short ?> Enrollment - Form</title>
 </head>
 <body>
 
@@ -58,156 +62,145 @@
 		        <h1>Personal information</h1>
 		
 		        <p>
-                    Please fill in your personal information. Competitors and staff of WTC2013 will see a field named "Role" with the corresponding role.
+                    Please fill in your personal information. Competitors and staff of <?php echo $str_event_short ?> will see a field named "Role" with the corresponding role.
                     If this is not the case, please contact your national representative.
 		        </p>
 		
-		        <label for="nationality"><span class="title">Nationality</span>
-			        <div class="variable flags" data-variable="nationality" data-value="australian">
-				        <img src="images/Flag_of_Australia.png" alt="Australian Flag" />
-			        </div>
-			        <div class="variable flags" data-variable="nationality" data-value="american">
-				        <img src="images/Flag_of_the_United_States.png" alt="United States Flag" />
-			        </div>
-			        <div class="variable flags" data-variable="nationality" data-value="danish">
-				        <img src="images/Flag_of_Denmark.png" alt="Danish Flag" />
-			        </div>
-			        <div class="variable flags" data-variable="nationality" data-value="dutch">
-				        <img src="images/Flag_of_the_Netherlands.png" alt="Dutch Flag" />
-			        </div>
-			        <div class="variable flags" data-variable="nationality" data-value="finnish">
-				        <img src="images/Flag_of_Finland.png" alt="Finnish Flag" />
-			        </div>
-			        <div class="variable flags" data-variable="nationality" data-value="french">
-				        <img src="images/Flag_of_France.png">
-			        </div>
-			        <div class="variable flags" data-variable="nationality" data-value="german">
-				        <img src="images/Flag_of_Germany.png" alt="German Flag" />
-			        </div>
-			        <div class="variable flags" data-variable="nationality" data-value="japanese">
-				        <img src="images/Flag_of_Japan.png" alt="Japanese Flag" />
-			        </div>
-			        <div class="variable flags" data-variable="nationality" data-value="norwegian">
-				        <img src="images/Flag_of_Norway.png" alt="Norwegian Flag" />
-			        </div>
-			        <div class="variable flags" data-variable="nationality" data-value="portuguese">
-				        <img src="images/Flag_of_Portugal.png" alt="Portugese Flag" />
-			        </div>
-			        <div class="variable flags" data-variable="nationality" data-value="swedish">
-				        <img src="images/Flag_of_Sweden.png" alt="Swedish Flag" />
-			        </div>
-			        <div class="variableErrorMessage" data-variable="nationality">
-				        Please select one nationality.
-			        </div>			
-		        </label>
+		        <label for="nationality"><span class="title">Nationality</span></label>
+                <!-- TODO: Configure involved nationalities (or clubs?) -->
+			    <div class="variable flags" data-variable="nationality" data-value="australian">
+				    <img src="images/Flag_of_Australia.png" alt="Australian Flag" />
+			    </div>
+			    <div class="variable flags" data-variable="nationality" data-value="american">
+				    <img src="images/Flag_of_the_United_States.png" alt="United States Flag" />
+			    </div>
+			    <div class="variable flags" data-variable="nationality" data-value="danish">
+				    <img src="images/Flag_of_Denmark.png" alt="Danish Flag" />
+			    </div>
+			    <div class="variable flags" data-variable="nationality" data-value="dutch">
+				    <img src="images/Flag_of_the_Netherlands.png" alt="Dutch Flag" />
+			    </div>
+			    <div class="variable flags" data-variable="nationality" data-value="finnish">
+				    <img src="images/Flag_of_Finland.png" alt="Finnish Flag" />
+			    </div>
+			    <div class="variable flags" data-variable="nationality" data-value="french">
+				    <img src="images/Flag_of_France.png" alt="French Flag" />
+			    </div>
+			    <div class="variable flags" data-variable="nationality" data-value="german">
+				    <img src="images/Flag_of_Germany.png" alt="German Flag" />
+			    </div>
+			    <div class="variable flags" data-variable="nationality" data-value="japanese">
+				    <img src="images/Flag_of_Japan.png" alt="Japanese Flag" />
+			    </div>
+			    <div class="variable flags" data-variable="nationality" data-value="norwegian">
+				    <img src="images/Flag_of_Norway.png" alt="Norwegian Flag" />
+			    </div>
+			    <div class="variable flags" data-variable="nationality" data-value="portuguese">
+				    <img src="images/Flag_of_Portugal.png" alt="Portugese Flag" />
+			    </div>
+			    <div class="variable flags" data-variable="nationality" data-value="swedish">
+				    <img src="images/Flag_of_Sweden.png" alt="Swedish Flag" />
+			    </div>
+			    <div class="variableErrorMessage" data-variable="nationality">
+				    Please select one nationality.
+			    </div>			
 
-		        <label for="email"><span class="title">Email address</span>
-			        <div class="variableObserver" data-variable="email"></div>
-		        </label>
+		        <label for="email"><span class="title">Email address</span></label>
+			    <div class="variableObserver" data-variable="email"></div>		        
 
-		
-		        <label for="firstName"><span class="title">First (given) names</span>
-			        <input type="text" name="firstName" id="firstName" class="variable" data-variable="firstName" />
-			        <div class="variableErrorMessage" data-variable="firstName">
-				        Please enter at least one name.
-			        </div>
-		        </label>
-		
-		        <label for="lastName"><span class="title">Last name</span>
-			        <input type="text" name="lastName" id="lastName" class="variable" data-variable="lastName" />
-			        <div class="variableErrorMessage" data-variable="lastName">
-				        Please enter last name.
-			        </div>
-		        </label>			
+		        <label for="firstName"><span class="title">First (given) names</span></label>
+			    <input type="text" name="firstName" id="firstName" class="variable" data-variable="firstName" />
+			    <div class="variableErrorMessage" data-variable="firstName">
+				    Please enter at least one name.
+			    </div>
+		        
+		        <label for="lastName"><span class="title">Last name</span></label>
+			    <input type="text" name="lastName" id="lastName" class="variable" data-variable="lastName" />
+			    <div class="variableErrorMessage" data-variable="lastName">
+				    Please enter last name.
+			    </div>
 
 		        <div class="requireEnabled" data-variable="firstNameGanji">
-			        <label for="firstNameGanji"><span class="title">First name in Ganji</span>
-				        <input type="text" name="firstNameGanji" id="firstNameGanji" class="variable" data-variable="firstNameGanji" />
-				        <div class="variableErrorMessage" data-variable="firstNameGanji">
-					        Please enter at least one name.
-				        </div>
-			        </label>				
+			        <label for="firstNameGanji"><span class="title">First name in Ganji</span></label>
+				    <input type="text" name="firstNameGanji" id="firstNameGanji" class="variable" data-variable="firstNameGanji" />
+				    <div class="variableErrorMessage" data-variable="firstNameGanji">
+					    Please enter at least one name.
+				    </div>
 			
-			        <label for="lastNameGanji"><span class="title">Last name in Ganji</span>
-				        <input type="text" name="lastNameGanji" id="lastNameGanji" class="variable" data-variable="lastNameGanji" />
-				        <div class="variableErrorMessage" data-variable="lastNameGanji">
-					        Please enter last name.
-				        </div>
-			        </label>				
+			        <label for="lastNameGanji"><span class="title">Last name in Ganji</span></label>
+				    <input type="text" name="lastNameGanji" id="lastNameGanji" class="variable" data-variable="lastNameGanji" />
+				    <div class="variableErrorMessage" data-variable="lastNameGanji">
+					    Please enter last name.
+				    </div>
 		        </div>
 		
-		        <label for=""><span class="title">Date of birth</span>
-			        Day <input type="text" name="birthDay" id="birthDay" size=2 class="variable" data-variable="birthDay" />
-			        Month <input type="text" name="birthMonth" id="birthMonth" size=2 class="variable" data-variable="birthMonth" />
-			        Year <input type="text" name="birthYear" id="birthYear" size=4 class="variable" data-variable="birthYear" />	
-			        <div class="variableErrorMessage" data-variable="birthDay">
-				        Day of birth must be a number between 1-31.
-			        </div>
-			        <div class="variableErrorMessage" data-variable="birthMonth">
-				        Month of birth must be a number between 1-12.
-			        </div>
-			        <div class="variableErrorMessage" data-variable="birthYear">
-				        Year of birth must be a number and a valid year.
-			        </div>
-		        </label>
+		        <label for=""><span class="title">Date of birth</span></label>
+			    Day <input type="text" name="birthDay" id="birthDay" size=2 class="variable" data-variable="birthDay" />
+			    Month <input type="text" name="birthMonth" id="birthMonth" size=2 class="variable" data-variable="birthMonth" />
+			    Year <input type="text" name="birthYear" id="birthYear" size=4 class="variable" data-variable="birthYear" />	
+			    <div class="variableErrorMessage" data-variable="birthDay">
+				    Day of birth must be a number between 1-31.
+			    </div>
+			    <div class="variableErrorMessage" data-variable="birthMonth">
+				    Month of birth must be a number between 1-12.
+			    </div>
+			    <div class="variableErrorMessage" data-variable="birthYear">
+				    Year of birth must be a number and a valid year.
+			    </div>
 		
-		        <label for="sex"><span class="title">Sex</span>
-			        <select name="sex" id="sex" class="variable" data-variable="sex">
-				        <option value="">Select one...</option>				
-				        <option value="male">male</option>
-				        <option value="female">female</option>
-			        </select>
-			        <div class="variableErrorMessage" data-variable="sex">
-				        Please select sex.
-			        </div>			
-		        </label>
+		        <label for="sex"><span class="title">Sex</span></label>
+			    <select name="sex" id="sex" class="variable" data-variable="sex">
+				    <option value="">Select one...</option>				
+				    <option value="male">male</option>
+				    <option value="female">female</option>
+			    </select>
+			    <div class="variableErrorMessage" data-variable="sex">
+				    Please select sex.
+			    </div>			
 		
-		        <label for="dojo"><span class="title">Local association / Dojo</span>
-			        <input type="text" name="dojo" id="dojo" class="variable" data-variable="dojo" />
-		        </label>			
+		        <label for="dojo"><span class="title">Local association / Dojo</span></label>
+			    <input type="text" name="dojo" id="dojo" class="variable" data-variable="dojo" />
+		        					
+		        <label for="taidoRank"><span class="title">Taido rank</span></label>
+			    <select name="rank" id="taidoRank" class="variable" data-variable="taidoRank">
+				    <option value="">Select one...</option>
+				    <option value="8">8 dan</option>
+				    <option value="7">7 dan</option>
+				    <option value="6">6 dan</option>
+				    <option value="5">5 dan</option>
+				    <option value="4">4 dan</option>
+				    <option value="3">3 dan</option>
+				    <option value="2">2 dan</option>
+				    <option value="1">1 dan</option>
+				    <option value="-1">1 kyu</option>
+				    <option value="-2">2 kyu</option>
+				    <option value="-3">3 kyu</option>
+				    <option value="-4">4 kyu</option>
+				    <option value="-5">5 kyu</option>
+				    <option value="-6">6 kyu</option>
+				    <option value="-7">7 kyu</option>
+				    <option value="none">don't practice</option>						
+			    </select>
+			    <div class="variableErrorMessage" data-variable="taidoRank">
+				    Please select taido rank.
+			    </div>			
 		
-		        <label for="taidoRank"><span class="title">Taido rank</span>
-			        <select name="rank" id="taidoRank" class="variable" data-variable="taidoRank">
-				        <option value="">Select one...</option>
-				        <option value="8">8 dan</option>
-				        <option value="7">7 dan</option>
-				        <option value="6">6 dan</option>
-				        <option value="5">5 dan</option>
-				        <option value="4">4 dan</option>
-				        <option value="3">3 dan</option>
-				        <option value="2">2 dan</option>
-				        <option value="1">1 dan</option>
-				        <option value="-1">1 kyu</option>
-				        <option value="-2">2 kyu</option>
-				        <option value="-3">3 kyu</option>
-				        <option value="-4">4 kyu</option>
-				        <option value="-5">5 kyu</option>
-				        <option value="-6">6 kyu</option>
-				        <option value="-7">7 kyu</option>
-				        <option value="none">don't practice</option>						
-			        </select>
-			        <div class="variableErrorMessage" data-variable="taidoRank">
-				        Please select taido rank.
-			        </div>			
-		        </label>				
-		
-		        <label>
-			        <span class="title">&nbsp;</span>
-			        <div class="variable" id="renshi" data-variable="renshi">Renshi</div>
-		        </label>
+		        <label><span class="title">&nbsp;</span></label>
+			    <div class="variable" id="renshi" data-variable="renshi">Renshi</div>
 
 		        <label class="requireValue" data-variable="role" data-value="!null">
 			        <span class="title">Role</span>
-			        <div class="requireValue" data-variable="role" data-value="wtc">
-			        WTC Competitor
-			        </div>
-			        <div class="requireValue" data-variable="role" data-value="staff">
-			        Staff
-			        </div>
-		        </label>	
+		        </label>
+			    <div class="requireValue" data-variable="role" data-value="wtc">
+			    WTC Competitor
+			    </div>
+			    <div class="requireValue" data-variable="role" data-value="staff">
+			    Staff
+			    </div>
 	        </div> <!--- personal information page -->
 
 	        <div class="page" id="packagesPage">
+                <!-- TODO: Configure packages -->
 		        <div class="packages">
 			        <div class="requireValue" data-variable="role" data-value="wtc">
 				        <div class="package variable" id="wtcPackage" data-variable="package" data-value="WTC Competitor">
@@ -306,12 +299,12 @@
 		
 		        <div class="requireEnabled" data-variable="diet">
 		            <h2>Additional required information</h2>
-			        <label for="diet"><span class="title">Dietary restrictions</span>
-				        <input type="text" name="diet" id="diet" class="variable" data-variable="diet" />
-				        <div class="variableErrorMessage" data-variable="diet">
-					        Please enter your dietary restrictions.
-				        </div>
-			        </label>		
+			        <label for="diet"><span class="title">Dietary restrictions</span></label>
+				    <input type="text" name="diet" id="diet" class="variable" data-variable="diet" />
+				    <div class="variableErrorMessage" data-variable="diet">
+					    Please enter your dietary restrictions.
+				    </div>
+			        		
 			        <label for="tshirt"><span class="title">T-shirt size</span>
 				        <select name="tshirt" id="tshirt" class="variable" data-variable="tshirt">
 					        <option value="110-120cm">110-120cm</option>
@@ -332,7 +325,7 @@
 		        <h1>International Friendship Games</h1>
 
 		        <h2>Rules and information</h2>
-
+                <!-- TODO: Edit text -->
 		        <ol>
 			        <li>Pacticipation costs 30 euros.</li>
 			        <li>Competitors have to be members of a national taido organization that belongs to the World Taido Federation.</li>					
@@ -348,14 +341,12 @@
 					
 			        <li>If a person only selects dantai or tenkai events and is only marked as a reserve, the participation fee of 30 euros will not be charged. The fee will show up in the enrollment system, but will not appear in the final bill.</li>
 		        </ol>
-			
  
 		        <h2>Jissen regulations</h2> 
-	
 		        Players are allowed to use any piece of chest or face protection from the list of acceptable items, which is maintained by the World Taido Federation. With their own responsibility, a competitor may choose to not wear protection.  
-				
 
 		        <h1>Events</h1>
+                <!-- TODO: Configure events -->
 		        <div class="event variable" id="eventB1" data-variable="eventB1">
 			        <div class="code">B1</div>
 			        <div class="title">Hokei, men</div>
@@ -541,7 +532,6 @@
 
 	        <div class="page" id="ifgTeamsPage">
 		        <h1>IFG Team selection</h1>
-				
 		        <p>
 			        A team should consists of members (i.e., players and possibly a leader) from the same country, but teams with members from more than one country are also allowed. All teams must be full at submission deadline. However, if a dantai jissen player is not able to participate in IFG due to injury or similar and no substitution is available, the match for the absent player will be counted as a "default loss" and the team can participate in the event with four (4) competitors. Only teams with at least 3 players are allowed to compete.		
 		        </p>
@@ -550,7 +540,6 @@
 		        </p>
 		
 		        <h2>Competitor substitution</h2>
-			
 		        <p>
                     If a competitor has to cancel his or her participation due to medical reasons, he or she may be replaced. Any replacement must be approved by the competition head office. A replaced competitor is not allowed to rejoin the team, even if he or she recovers and would otherwise be able to compete in the same event again. If a physician has ordered a competitor to not compete, he or she will not be allowed to participate in any event what so ever.
 		        </p>
@@ -560,94 +549,89 @@
 		        <div class="dantai requireValue" data-variable="eventB19">
 			        <h2>B19 Dantai hokei, mixed</h2>
 				
-			        <label for="teamB19_name"><span class="title">Team name</span>
-				        <input type="text" name="teamB19_name" id="teamB19_name" class="variable" data-variable="teamB19_name" />
-				        <div id="teamB19_loading" class="loading"><img src="images/ajax-loader.gif" alt="Loading" /></div>
-				        <div id="teamB19_nameok" class="nameok"><img src="images/tick.png" alt="Tick" /></div>
-			        </label>
+			        <label for="teamB19_name"><span class="title">Team name</span></label>
+				    <input type="text" name="teamB19_name" id="teamB19_name" class="variable" data-variable="teamB19_name" />
+				    <div id="teamB19_loading" class="loading"><img src="images/ajax-loader.gif" alt="Loading" /></div>
+				    <div id="teamB19_nameok" class="nameok"><img src="images/tick.png" alt="Tick" /></div>
 			        <div class="variableErrorMessage" data-variable="teamB19_name">
 				        Please enter a unique name of at least 4 characters for the team, or clear the name to remove the team.
 			        </div>
 			
 			        <div class="team">
-				        <label><span class="title">Player 1</span><div class="variable selectPerson" data-variable="teamB19_p1"></div></label>
-				        <label><span class="title">Player 2</span><div class="variable selectPerson" data-variable="teamB19_p2"></div></label>
-				        <label><span class="title">Player 3</span><div class="variable selectPerson" data-variable="teamB19_p3"></div></label>
-				        <label><span class="title">Player 4</span><div class="variable selectPerson" data-variable="teamB19_p4"></div></label>
-				        <label><span class="title">Player 5</span><div class="variable selectPerson" data-variable="teamB19_p5"></div></label>
-				        <label><span class="title">Reserve 1</span><div class="variable selectPerson" data-variable="teamB19_r1"></div></label>
-				        <label><span class="title">Reserve 2</span><div class="variable selectPerson" data-variable="teamB19_r2"></div></label>
+				        <label><span class="title">Player 1</span></label><div class="variable selectPerson" data-variable="teamB19_p1"></div>
+				        <label><span class="title">Player 2</span></label><div class="variable selectPerson" data-variable="teamB19_p2"></div>
+				        <label><span class="title">Player 3</span></label><div class="variable selectPerson" data-variable="teamB19_p3"></div>
+				        <label><span class="title">Player 4</span></label><div class="variable selectPerson" data-variable="teamB19_p4"></div>
+				        <label><span class="title">Player 5</span></label><div class="variable selectPerson" data-variable="teamB19_p5"></div>
+				        <label><span class="title">Reserve 1</span></label><div class="variable selectPerson" data-variable="teamB19_r1"></div>
+				        <label><span class="title">Reserve 2</span></label><div class="variable selectPerson" data-variable="teamB19_r2"></div>
 			        </div>
 		        </div>
 		        <div class="dantai requireValue" data-variable="eventB20">
 			        <h2>B20 Dantai jissen, men</h2>
 				
-			        <label for="teamB20_name"><span class="title">Team name</span>
-				        <input type="text" name="teamB20_name" id="teamB20_name" class="variable" data-variable="teamB20_name" />
-				        <div id="teamB20_loading" class="loading"><img src="images/ajax-loader.gif"></div>
-				        <div id="teamB20_nameok" class="nameok"><img src="images/tick.png"></div>
-			        </label>
+			        <label for="teamB20_name"><span class="title">Team name</span></label>
+				    <input type="text" name="teamB20_name" id="teamB20_name" class="variable" data-variable="teamB20_name" />
+				    <div id="teamB20_loading" class="loading"><img src="images/ajax-loader.gif" alt="Loading"/></div>
+				    <div id="teamB20_nameok" class="nameok"><img src="images/tick.png" alt="OK"/></div>
 			        <div class="variableErrorMessage" data-variable="teamB20_name">
 				        Please enter a unique name of at least 4 characters for the team, or clear the name to remove the team.
 			        </div>			
 			
 			        <div class="team">
-				        <label><span class="title">Leader</span><div class="variable selectPerson" data-variable="teamB20_lead"></div></label>
-				        <label><span class="title">Player 1</span><div class="variable selectPerson" data-variable="teamB20_p1"></div></label>
-				        <label><span class="title">Player 2</span><div class="variable selectPerson" data-variable="teamB20_p2"></div></label>
-				        <label><span class="title">Player 3</span><div class="variable selectPerson" data-variable="teamB20_p3"></div></label>
-				        <label><span class="title">Player 4</span><div class="variable selectPerson" data-variable="teamB20_p4"></div></label>
-				        <label><span class="title">Player 5</span><div class="variable selectPerson" data-variable="teamB20_p5"></div></label>
-				        <label><span class="title">Reserve 1</span><div class="variable selectPerson" data-variable="teamB20_r1"></div></label>
-				        <label><span class="title">Reserve 2</span><div class="variable selectPerson" data-variable="teamB20_r2"></div></label>
+				        <label><span class="title">Leader</span></label><div class="variable selectPerson" data-variable="teamB20_lead"></div>
+				        <label><span class="title">Player 1</span></label><div class="variable selectPerson" data-variable="teamB20_p1"></div>
+				        <label><span class="title">Player 2</span></label><div class="variable selectPerson" data-variable="teamB20_p2"></div>
+				        <label><span class="title">Player 3</span></label><div class="variable selectPerson" data-variable="teamB20_p3"></div>
+				        <label><span class="title">Player 4</span></label><div class="variable selectPerson" data-variable="teamB20_p4"></div>
+				        <label><span class="title">Player 5</span></label><div class="variable selectPerson" data-variable="teamB20_p5"></div>
+				        <label><span class="title">Reserve 1</span></label><div class="variable selectPerson" data-variable="teamB20_r1"></div>
+				        <label><span class="title">Reserve 2</span></label><div class="variable selectPerson" data-variable="teamB20_r2"></div>
 			        </div>
 		        </div>
 		        <div class="dantai requireValue" data-variable="eventB21">
 			        <h2>B21 Dantai jissen, women</h2>
 				
-			        <label for="teamB21_name"><span class="title">Team name</span>
-				        <input type="text" name="teamB21_name" id="teamB21_name" class="variable" data-variable="teamB21_name" />
-				        <div id="teamB21_loading" class="loading"><img src="images/ajax-loader.gif" alt="Loader" /></div>				
-				        <div id="teamB21_nameok" class="nameok"><img src="images/tick.png" alt="Tick" /></div>
-			        </label>
+			        <label for="teamB21_name"><span class="title">Team name</span></label>
+				    <input type="text" name="teamB21_name" id="teamB21_name" class="variable" data-variable="teamB21_name" />
+				    <div id="teamB21_loading" class="loading"><img src="images/ajax-loader.gif" alt="Loader" /></div>				
+				    <div id="teamB21_nameok" class="nameok"><img src="images/tick.png" alt="Tick" /></div>
 			        <div class="variableErrorMessage" data-variable="teamB21_name">
 				        Please enter a unique name of at least 4 characters for the team, or clear the name to remove the team.
 			        </div>			
 			
 			        <div class="team">
-				        <label><span class="title">Leader</span><div class="variable selectPerson" data-variable="teamB21_lead"></div></label>
-				        <label><span class="title">Player 1</span><div class="variable selectPerson" data-variable="teamB21_p1"></div></label>
-				        <label><span class="title">Player 2</span><div class="variable selectPerson" data-variable="teamB21_p2"></div></label>
-				        <label><span class="title">Player 3</span><div class="variable selectPerson" data-variable="teamB21_p3"></div></label>
-				        <label><span class="title">Player 4</span><div class="variable selectPerson" data-variable="teamB21_p4"></div></label>
-				        <label><span class="title">Player 5</span><div class="variable selectPerson" data-variable="teamB21_p5"></div></label>
-				        <label><span class="title">Reserve 1</span><div class="variable selectPerson" data-variable="teamB21_r1"></div></label>
-				        <label><span class="title">Reserve 2</span><div class="variable selectPerson" data-variable="teamB21_r2"></div></label>
+				        <label><span class="title">Leader</span></label><div class="variable selectPerson" data-variable="teamB21_lead"></div>
+				        <label><span class="title">Player 1</span></label><div class="variable selectPerson" data-variable="teamB21_p1"></div>
+				        <label><span class="title">Player 2</span></label><div class="variable selectPerson" data-variable="teamB21_p2"></div>
+				        <label><span class="title">Player 3</span></label><div class="variable selectPerson" data-variable="teamB21_p3"></div>
+				        <label><span class="title">Player 4</span></label><div class="variable selectPerson" data-variable="teamB21_p4"></div>
+				        <label><span class="title">Player 5</span></label><div class="variable selectPerson" data-variable="teamB21_p5"></div>
+				        <label><span class="title">Reserve 1</span></label><div class="variable selectPerson" data-variable="teamB21_r1"></div>
+				        <label><span class="title">Reserve 2</span></label><div class="variable selectPerson" data-variable="teamB21_r2"></div>
 			        </div>
 		        </div>
 
 		        <div class="dantai requireValue" data-variable="eventB22">
 			        <h2>B22 Tenkai, mixed</h2>
 				
-			        <label for="teamB22_name"><span class="title">Team name</span>
-				        <input type="text" name="teamB22_name" id="teamB22_name" class="variable" data-variable="teamB22_name" />
-				        <div id="teamB22_loading" class="loading"><img src="images/ajax-loader.gif" alt="Loading" /></div>				
-				        <div id="teamB22_nameok" class="nameok"><img src="images/tick.png" alt="Tick" /></div>
-			        </label>
+			        <label for="teamB22_name"><span class="title">Team name</span></label>
+				    <input type="text" name="teamB22_name" id="teamB22_name" class="variable" data-variable="teamB22_name" />
+				    <div id="teamB22_loading" class="loading"><img src="images/ajax-loader.gif" alt="Loading" /></div>				
+				    <div id="teamB22_nameok" class="nameok"><img src="images/tick.png" alt="Tick" /></div>
 			        <div class="variableErrorMessage" data-variable="teamB22_name">
 				        Please enter a unique name of at least 4 characters for the team, or clear the name to remove the team.
 			        </div>
 			
-			
 			        <div class="team">
-				        <label><span class="title">Player 1</span><div class="variable selectPerson" data-variable="teamB22_p1"></div></label>
-				        <label><span class="title">Player 2</span><div class="variable selectPerson" data-variable="teamB22_p2"></div></label>
-				        <label><span class="title">Player 3</span><div class="variable selectPerson" data-variable="teamB22_p3"></div></label>
-				        <label><span class="title">Player 4</span><div class="variable selectPerson" data-variable="teamB22_p4"></div></label>
-				        <label><span class="title">Player 5</span><div class="variable selectPerson" data-variable="teamB22_p5"></div></label>
-				        <label><span class="title">Player 6</span><div class="variable selectPerson" data-variable="teamB22_p6"></div></label>
-				        <label><span class="title">Reserve 1</span><div class="variable selectPerson" data-variable="teamB22_r1"></div></label>
-				        <label><span class="title">Reserve 2</span><div class="variable selectPerson" data-variable="teamB22_r2"></div></label>
+				        <label><span class="title">Player 1</span></label><div class="variable selectPerson" data-variable="teamB22_p1"></div>
+				        <label><span class="title">Player 2</span></label><div class="variable selectPerson" data-variable="teamB22_p2"></div>
+				        <label><span class="title">Player 3</span></label><div class="variable selectPerson" data-variable="teamB22_p3"></div>
+				        <label><span class="title">Player 4</span></label><div class="variable selectPerson" data-variable="teamB22_p4"></div>
+				        <label><span class="title">Player 5</span></label><div class="variable selectPerson" data-variable="teamB22_p5"></div>
+				        <label><span class="title">Player 6</span></label><div class="variable selectPerson" data-variable="teamB22_p6"></div>
+				        <label><span class="title">Reserve 1</span></label><div class="variable selectPerson" data-variable="teamB22_r1"></div>
+				        <label><span class="title">Reserve 2</span></label><div class="variable selectPerson" data-variable="teamB22_r2"></div>
 			        </div>
 		        </div>
 		
@@ -655,12 +639,12 @@
 
 	        <div class="page" id="judgePage">
 		        <h1>Judge</h1>
-		
+		        <!-- TODO: Edit text -->
 		        <p>
 			        A judge in WTC must have 4 dan and be experienced in judging. If you will complete 4 dan shinsa during the WTC 2013 event, 
 			        you may enroll as a judge in WTC. A judge in IFG should also have 4 dan and be experienced in judging. However, if you have 
                     a recommendation from your national taido organization, you may apply the right to judge in the IFG event. 
-                    <?php $contact_name ?> and World Taido Federation will review all judge enrollments and decide if a person is qualified. 
+                    <?php echo $contact_name ?> and World Taido Federation will review all judge enrollments and decide if a person is qualified. 
 		        </p>
 		        <p>
 			        Enrollment as judge is binding. All judges who enroll to WTC must enroll also 
@@ -670,8 +654,8 @@
 		        <div class="requireValue" data-variable="taidoRank" data-value="3">
 			        <label>
 				        <span class="title">Will you complete 4 dan during the WTC Event?</span>
-				        <div class="variable" data-variable="willComplete4dan">Yes</div>
 			        </label>
+				    <div class="variable" data-variable="willComplete4dan">Yes</div>
 		        </div>		
 		
 		        <div class="clearfloat"></div>
@@ -687,65 +671,64 @@
 		
 		        <div class="requireEnabled" data-variable="judgeNationalSeminars">
 		
-			        <h2>Judging experience</h2>
-			
+			        <h2>Judging experience</h2>			
 			        <p>
 				        Please fill in the number of times you have participated or judged in the following events.
 			        </p>		
 			
 			        <label for="judgeNationalSeminars">
-				        <span class="title">National seminars</span>
-				        <input type="text" class="variable" data-variable="judgeNationalSeminars" />
-				        <div class="variableErrorMessage" data-variable="judgeNationalSeminars">
-					        Please enter a valid number.
-				        </div>
-			        </label>	
+                        <span class="title">National seminars</span>
+			        </label>
+				    <input type="text" class="variable" data-variable="judgeNationalSeminars" />
+				    <div class="variableErrorMessage" data-variable="judgeNationalSeminars">
+					    Please enter a valid number.
+				    </div>
 
 			        <label for="judgeInternationalSeminars">
 				        <span class="title">International seminars</span>
-				        <input type="text" class="variable" data-variable="judgeInternationalSeminars" />
-				        <div class="variableErrorMessage" data-variable="judgeInternationalSeminars">
-					        Please enter a valid number.
-				        </div>
-			        </label>				
+                    </label>
+				    <input type="text" class="variable" data-variable="judgeInternationalSeminars" />
+				    <div class="variableErrorMessage" data-variable="judgeInternationalSeminars">
+					    Please enter a valid number.
+				    </div>
 
 			        <label for="judgeNational">
 				        <span class="title">National championships</span>
-				        <input type="text" class="variable" data-variable="judgeNationalCount" />
-				        <div class="variableErrorMessage" data-variable="judgeNationalCount">
-					        Please enter a valid number.
-				        </div>
-			        </label>				
+                    </label>
+				    <input type="text" class="variable" data-variable="judgeNationalCount" />
+				    <div class="variableErrorMessage" data-variable="judgeNationalCount">
+					    Please enter a valid number.
+				    </div>
 			
 			        <label for="judgeIFGCount">
 				        <span class="title">Friendship games</span>
-				        <input type="text" class="variable" data-variable="judgeIFGCount" />
-				        <div class="variableErrorMessage" data-variable="judgeIFGCount">
-					        Please enter a valid number.
-				        </div>
-			        </label>		
+                    </label>
+				    <input type="text" class="variable" data-variable="judgeIFGCount" />
+				    <div class="variableErrorMessage" data-variable="judgeIFGCount">
+					    Please enter a valid number.
+				    </div>
 
 			        <label for="judgeECCount">
 				        <span class="title">European championships</span>
-				        <input type="text" class="variable" data-variable="judgeECCount" />
-				        <div class="variableErrorMessage" data-variable="judgeECCount">
-					        Please enter a valid number.
-				        </div>
-			        </label>				
+                    </label>
+				    <input type="text" class="variable" data-variable="judgeECCount" />
+				    <div class="variableErrorMessage" data-variable="judgeECCount">
+					    Please enter a valid number.
+				    </div>
 			
 			        <label for="judgeWCCount">
 				        <span class="title">World championships</span>
-				        <input type="text" class="variable" data-variable="judgeWCCount" />
-				        <div class="variableErrorMessage" data-variable="judgeWCCount">
-					        Please enter a valid number.
-				        </div>
-			        </label>	
+                    </label>
+				    <input type="text" class="variable" data-variable="judgeWCCount" />
+				    <div class="variableErrorMessage" data-variable="judgeWCCount">
+					    Please enter a valid number.
+				    </div>
 		        </div>
 	        </div>
 
 	        <div class="page volunteer" id="volunteerPage">
+                <!-- TODO: Edit text. Configure options? -->
 		        <h1>Volunteering</h1>
-		
 		        <p>				 
 			        If you are willing to do some volunteer work, please select the dates and the tasks you are willing to participate in. Tasks that overlap with your previous selections, such as IFG games, are not shown.
 		        </p>
@@ -801,8 +784,8 @@
 	        </div> <!-- Volunteers page -->
 
 	        <div class="page hotel" id="hotelPage">
-		        <h1>Sokos Hotel Pasila</h1>
-		
+                <!-- TODO: Edit text. Configure options? -->
+		        <h1>Sokos Hotel Pasila</h1>		
 		        <p>				 
 			        The Sokos Hotel Pasila provides peaceful and cozy accommodations in Helsinki’s Länsi-Pasila district. 
 			        The Pasila Sport Hall (venue for the WTC2013 event, 700m), Helsinki Congress and Exhibition Center, 
@@ -811,7 +794,6 @@
 			        allows for easy access to central Helsinki can be found right outside the hotel. Guests traveling by car can 
 			        make use of the hotel’s garage and outdoor parking spaces as well as the car wash.  
 		        </p>
-
 		        <p>
 			        Spacious, air conditioned rooms with cable TV and free Wi-Fi.  
 			        Buffet breakfast is included in the room rate. 
@@ -940,6 +922,7 @@
 	        </div>	<!-- accommodation page -->
 
 	        <div class="page" id="optionalPage">
+                <!-- TODO: Edit text and options -->
 		        <h1>Optional services</h1>
 		        <p>
 			        Information about sightseeings and excursions are sent later. The exact costs for some of the services are determined after the number of participants is determined. 
@@ -997,6 +980,7 @@
 	        </div>
 
 	        <div class="page" id="summaryPage">
+                <!-- TODO: Edit text and match options to above -->
 		        <h1>Summary</h1>
 		        <p>
 		        Summary of what you have selected.
@@ -1071,84 +1055,83 @@
 				        <div class="variableObserver" data-variable="diet"></div>			
 			        </div>
 
-			        <div class="requireEnabled" data-variable="ifgCost">
-			
+			        <div class="requireEnabled" data-variable="ifgCost">			
 				        <h2>Interantional Friendship Games events</h2>
 				        <div class="eventSummary">
 					        <div class="costSummary"><div class="variableObserver" data-variable="ifgCost">0</div> &euro;</div>
-					        <div class="requireValue" data-variable="eventB1" data-value="yes">
-						        <span>B1 Hokei, men  </span>
-					        </div>
-					        <div class="requireValue" data-variable="eventB2" data-value="yes">
-					         <span>B2 Hokei, women  </span>
-					          </div>
-					        <div class="requireValue" data-variable="eventB3" data-value="yes">
-					         <span>B3 Jissen, men  </span>
-					          </div>
-					        <div class="requireValue" data-variable="eventB4" data-value="yes">
-					         <span>B4 Jissen, women  </span>
-					          </div>
-					        <div class="requireValue" data-variable="eventB5" data-value="yes">
-					         <span>B5 Hokei, men  </span>
-					          </div>
-					        <div class="requireValue" data-variable="eventB6" data-value="yes">
-					         <span>B6 Hokei, women  </span>
-					          </div>
-					        <div class="requireValue" data-variable="eventB7" data-value="yes">
-					         <span>B7 Jissen, men  </span>
-					          </div>
-					        <div class="requireValue" data-variable="eventB8" data-value="yes">
-					         <span>B8 Jissen, women  </span>
-					          </div>
-					        <div class="requireValue" data-variable="eventB9" data-value="yes">
-					         <span>B9 Sonen hokei, mixed  </span>
-					          </div>
-					        <div class="requireValue" data-variable="eventB10" data-value="yes">
-					         <span>B10 Sonen hokei, mixed  </span>
-					          </div>
-					        <div class="requireValue" data-variable="eventB11" data-value="yes">
-					         <span>B11 Sonen jissen, men  </span>
-					          </div>
-					        <div class="requireValue" data-variable="eventB12" data-value="yes">
-					         <span>B12 Sonen jissen, women  </span>
-					          </div>
-					        <div class="requireValue" data-variable="eventB13" data-value="yes">
-					         <span>B13 Junior hokei, mixed </span>
-					          </div>
-					        <div class="requireValue" data-variable="eventB14" data-value="yes">
-					         <span>B14 Junior hokei, mixed </span>
-					          </div>
-					        <div class="requireValue" data-variable="eventB15" data-value="yes">
-					         <span>B15 Jissen, boys </span>
-					          </div>
-					        <div class="requireValue" data-variable="eventB16" data-value="yes">
-					         <span>B16 Jissen, girls </span>
-					          </div>
-					        <div class="requireValue" data-variable="eventB17" data-value="yes">
-					         <span>B17 Jissen, boys </span>
-					          </div>
-					        <div class="requireValue" data-variable="eventB18" data-value="yes">
-					         <span>B18 Jissen, girls </span>
-					          </div>
-					        <div class="requireValue" data-variable="eventB19" data-value="yes">
-					         <span>B19 Dantai hokei, mixed  </span>
-					          </div>
-					        <div class="requireValue" data-variable="eventB20" data-value="yes">
-					         <span>B20 Dantai jissen, men  </span>
-					          </div>
-					        <div class="requireValue" data-variable="eventB21" data-value="yes">
-					         <span>B21 Dantai jissen, women  </span>
-					          </div>
-					        <div class="requireValue" data-variable="eventB22" data-value="yes">
-					         <span>B22 Tenkai, mixed  </span>
-					          </div>
-					        <div class="requireValue" data-variable="eventB23" data-value="yes">
-					         <span>B23 Taido trick-track for Juniors </span>
-					        </div>
-					        <div class="requireValue" data-variable="ifgCost" data-value="0">
-						        No events selected.
-					        </div>
-				        </div>
+                            <div class="requireValue" data-variable="eventB1" data-value="yes">
+                                <span>B1 Hokei, men  </span>
+                            </div>
+                            <div class="requireValue" data-variable="eventB2" data-value="yes">
+                                <span>B2 Hokei, women  </span>
+                            </div>
+                            <div class="requireValue" data-variable="eventB3" data-value="yes">
+                                <span>B3 Jissen, men  </span>
+                            </div>
+                            <div class="requireValue" data-variable="eventB4" data-value="yes">
+                                <span>B4 Jissen, women  </span>
+                            </div>
+                            <div class="requireValue" data-variable="eventB5" data-value="yes">
+                                <span>B5 Hokei, men  </span>
+                            </div>
+                            <div class="requireValue" data-variable="eventB6" data-value="yes">
+                                <span>B6 Hokei, women  </span>
+                            </div>
+                            <div class="requireValue" data-variable="eventB7" data-value="yes">
+                                <span>B7 Jissen, men  </span>
+                            </div>
+                            <div class="requireValue" data-variable="eventB8" data-value="yes">
+                                <span>B8 Jissen, women  </span>
+                            </div>
+                            <div class="requireValue" data-variable="eventB9" data-value="yes">
+                                <span>B9 Sonen hokei, mixed  </span>
+                            </div>
+                            <div class="requireValue" data-variable="eventB10" data-value="yes">
+                                <span>B10 Sonen hokei, mixed  </span>
+                            </div>
+                            <div class="requireValue" data-variable="eventB11" data-value="yes">
+                                <span>B11 Sonen jissen, men  </span>
+                            </div>
+                            <div class="requireValue" data-variable="eventB12" data-value="yes">
+                                <span>B12 Sonen jissen, women  </span>
+                            </div>
+                            <div class="requireValue" data-variable="eventB13" data-value="yes">
+                                <span>B13 Junior hokei, mixed </span>
+                            </div>
+                            <div class="requireValue" data-variable="eventB14" data-value="yes">
+                                <span>B14 Junior hokei, mixed </span>
+                            </div>
+                            <div class="requireValue" data-variable="eventB15" data-value="yes">
+                                <span>B15 Jissen, boys </span>
+                            </div>
+                            <div class="requireValue" data-variable="eventB16" data-value="yes">
+                                <span>B16 Jissen, girls </span>
+                            </div>
+                            <div class="requireValue" data-variable="eventB17" data-value="yes">
+                                <span>B17 Jissen, boys </span>
+                            </div>
+                            <div class="requireValue" data-variable="eventB18" data-value="yes">
+                                <span>B18 Jissen, girls </span>
+                            </div>
+                            <div class="requireValue" data-variable="eventB19" data-value="yes">
+                                <span>B19 Dantai hokei, mixed  </span>
+                            </div>
+                            <div class="requireValue" data-variable="eventB20" data-value="yes">
+                                <span>B20 Dantai jissen, men  </span>
+                            </div>
+                            <div class="requireValue" data-variable="eventB21" data-value="yes">
+                                <span>B21 Dantai jissen, women  </span>
+                            </div>
+                            <div class="requireValue" data-variable="eventB22" data-value="yes">
+                                <span>B22 Tenkai, mixed  </span>
+                            </div>
+                            <div class="requireValue" data-variable="eventB23" data-value="yes">
+                                <span>B23 Taido trick-track for Juniors </span>
+                            </div>
+                            <div class="requireValue" data-variable="ifgCost" data-value="0">
+                                No events selected.					       
+                            </div>
+                        </div>
 				
 				        <h2>International Friendship Games teams</h2>
 				
@@ -1364,7 +1347,6 @@
 					        <div class="variableObserver" data-variable="roomType"></div>
 				        </div>
 
-
 				        <div class="requireEnabled" data-variable="hotelAccompany">
 					        <div class="varSummary">
 						        <span class="title">Request for room mate</span>
@@ -1458,8 +1440,8 @@
 			        <h2>Submit enrollment</h2>
 			        <p>
 				        Please check that the above information is correct. When you are confident with the content, submit your information as enrollment 
-                        to the WTC 2013 event. You may revisit your submission and resubmit. You may also retract your submission. You are able to do this 
-                        until the submission deadline <?php $submission_deadline ?>.
+                        to the <?php echo $str_event_short ?> event. You may revisit your submission and resubmit. You may also retract your submission. You are able to do this 
+                        until the submission deadline <?php echo $submission_deadline ?>.
 			        </p>
 			
 			        <div class="varSummary">
@@ -1495,7 +1477,7 @@
 
 	<div id="footer">
 		<div id="footerLeft">
-			Help? <a href="mailto:<?php $contact_email ?>"><?php $contact_email ?></a>
+			Help? <a href="mailto:<?php echo $contact_email ?>"><?php echo $contact_email ?></a>
 		</div>
         <!-- TODO: Remove? -->
 		<div id="footerRight">
@@ -1512,7 +1494,7 @@
         people will be able to add you to their teams.
 	</p>	
 	<p>
-        You may update your submission or retract it at any time before the submission deadline <?php $submission_deadline ?>.
+        You may update your submission or retract it at any time before the submission deadline <?php echo $submission_deadline ?>.
 	</p>
 </div>
 
@@ -1521,7 +1503,7 @@
         Do you really want to retract your submission? You will be removed from any IFG dantai or tenkai teams you might be selected in.
 	</p>	
 	<p>
-		You may resubmit at any time before the submission deadline <?php $submission_deadline ?>.
+		You may resubmit at any time before the submission deadline <?php echo $submission_deadline ?>.
 	</p>
 </div>
 

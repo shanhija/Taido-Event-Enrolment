@@ -688,6 +688,7 @@ function Pages() {
 };
 
 
+//TODO: These rules should be moved to a configuration which could be used for rendering input form and summary as well as rule enforcement in this script
 var eventRules = [
 	// Event code, sex, min birth year, max year, min belt, max belt, all inclusive
 	["B1", "male", 0, 1997, -2, 10],
@@ -823,7 +824,7 @@ $(function() {
 		for(var i = 0; i < eventRules.length && !selected; ++i) {
 			selected |= model.getValue("event"+eventRules[i][0]) == "yes";
 		}
-		model.setValue("ifgCost",(selected)?30:0);		
+		model.setValue("ifgCost",(selected)?30:0);		//TODO: Edit cost!
 	});
 	
 	// Age alerts for events
@@ -831,7 +832,8 @@ $(function() {
 	for (var i = 0; i < eventRuleAlerts.length; ++i) {
 		var event = "event"+eventRuleAlerts[i];
 		var func = function(event) {
-			return function() {
+		    return function () {
+                //TODO: Edit birth year limits
 				if (model.getValue("birthYear") >= 1995 && model.getValue("birthYear") <= 1997 && 
 					model.getValue(event) == "yes") {
 					$("#"+event+"warning").removeClass("disabled");
@@ -869,9 +871,9 @@ $(function() {
 	});
 		
 	// Children of at most 12 have a cheaper tourist package
-	model.addEffect(["birthYear"], function() {
-		if (model.getValue("birthYear") >= 2001) {
-		
+	model.addEffect(["birthYear"], function () {
+	    //TODO: Edit birth year limit and costs
+		if (model.getValue("birthYear") >= 2001) {  		
 			$("#touristPrice").html("145 &euro;");
 			$("#wtcTicketPrice").html("10 &euro;");
 		} else {
@@ -930,7 +932,8 @@ $(function() {
 		
 	});
 	
-	// Package cost
+    // Package cost
+    //TODO: Edit costs and birth year limit
 	model.addVariable("packageCost");
 	model.addEffect(["package"], function() {
 		var cost = 0;
@@ -1105,7 +1108,8 @@ $(function() {
 			return ((value != null) && (value >= 0) && (value <= 10000));
 		});
 	});
-	
+
+    //TODO: Edit costs, edit options, ...	
 	model.addVariable("hotelCost");
 	model.addEffect(["hotel307", "hotel317", "hotel018", "hotel028", "hotel038", "hotel048", "roomType", "package"], function() {
 		var type = model.getValue("roomType");
@@ -1168,6 +1172,7 @@ $(function() {
 		model.setEnabled("optionalWTCticket", (!(model.getValue("package")) || (model.getValue("package")=="Volunteer")) && (model.getValue("role") != "wtc"));
 	});		
 	
+    //TODO: Edit costs and options
 	model.addVariable("optionalsCost");
 	model.addEffect(["optionalBanquette", "optionalWTCticket", "ultimateSauna", "hikingTour", "helsinkiTourWednesday", "helsinkiTourThursday", "tallinTour", "porvooTour"], function() {
 		var cost = 0;

@@ -37,21 +37,21 @@ include "settings.php";
             your address.
 		</p>
 		
-		<h2>Registeration has now ended!</h2>
 <!--
-	<div class="registerinfo" id="loginForm">
-		<div class="title">Email address</div>
-		<div id="emailaddress">
-			<input type="text" id="email" name="email">
-		</div>
-		<div id="submitLogin">Submit</div>
-	</div>
-	<div class="registerinfo" id="result">
-		<div class="title" id="resultTitle"></div>
-		<div class="details" id="resultDetails">
-		</div>
-	</div>
+		<h2>Registeration has now ended!</h2>
 -->
+	    <div class="registerinfo" id="loginForm">
+		    <div class="title">Email address</div>
+		    <div id="emailaddress">
+			    <input type="text" id="email" name="email">
+		    </div>
+		    <div id="submitLogin">Submit</div>
+	    </div>
+	    <div class="registerinfo" id="result">
+		    <div class="title" id="resultTitle"></div>
+		    <div class="details" id="resultDetails">
+		    </div>
+	    </div>
 	</div>
 </div>
     		
